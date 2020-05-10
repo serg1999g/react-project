@@ -1,0 +1,13 @@
+@import "src/styles/index";
+
+.wrapperLogin {
+  padding-top: spacing(20);
+  margin: 0 auto;
+  max-width: 600px;
+
+  .messageError {
+    padding-top: spacing(3);
+    text-align: center;
+    color: $danger-color;
+  }
+}

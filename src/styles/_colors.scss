@@ -1,0 +1,36 @@
+@import "variables";
+
+//Selector color
+$selector-color:        #4A3285;
+
+/*highlight color*/
+::selection {
+  background-color: $selector-color;
+}
+
+::-moz-selection {
+  background-color: $selector-color;
+}
+
+
+// Main Colors
+$color-main:            #19242a;
+$primary-color:         #7ca1b3;
+$secondary-color:       #23323a;
+$tertiary-color:        #93a6b0;
+
+$dark-blue:             #141D21;
+$color-white:           #ffffff;
+
+
+$success-color:         #66BB6A;
+$danger-color:          #FF5D29;
+$color-white:           #FFFFFF;
+
+// Text Colors
+$primary-text-color:    $primary-color;
+$link-color:            $tertiary-color;
+
+
+// bg color
+$bg-main:               $color-main;

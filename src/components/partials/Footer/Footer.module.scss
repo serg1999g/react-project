@@ -1,0 +1,42 @@
+@import "src/styles/index";
+
+.footer {
+  margin-top: auto;
+  padding: spacing(3) 0;
+  background-color: $dark-blue;
+
+  .item {
+    &:not(:first-child) {
+      margin-left: spacing(2);
+    }
+  }
+
+  .icon {
+    color: $link-color;
+    transition: 0.2s;
+
+    &.github:hover,
+    &.laravel:hover,
+    &.react:hover {
+      transition: 0.2s;
+    }
+
+    &.github {
+      &:hover {
+        color: $color-white
+      }
+    }
+
+    &.laravel {
+      &:hover {
+        color: #ff2d20;
+      }
+    }
+
+    &.react {
+      &:hover {
+        color: #61dafb;
+      }
+    }
+  }
+}
