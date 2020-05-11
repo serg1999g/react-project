@@ -25,8 +25,8 @@ const SignInComponent = (
         },
 
         validationSchema: Yup.object({
-            email: Yup.string().email().required(),
-            password: Yup.string().min(8).required(),
+            email: Yup.string().email('Email is invalid').required('Email is required'),
+            password: Yup.string().min(6).required('Password is required'),
         }),
 
         onSubmit(values) {
