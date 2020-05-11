@@ -33,7 +33,7 @@ function App() {
                 <Switch>
                     <PrivateRoute exact path="/" component={HomePage}/>
                     <PublicRoute exact path={routesByName.signIn} component={SignInComponent}/>
-                    <PublicRoute exact path={routesByName.signUp} component={SignInComponent}/>
+                    <PublicRoute exact path={routesByName.signUp} component={SignUpContainer}/>
                     <Route exact path="*" component={Page404}/>
                 </Switch>
             <Footer/>
