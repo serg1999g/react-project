@@ -20,8 +20,8 @@ const BaseLink = (
 };
 
 BaseLink.propTypes = {
-    path: PropTypes.string,
-    title: PropTypes.string,
+    path: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     spacing: PropTypes.string,
 };
 

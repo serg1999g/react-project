@@ -1,4 +1,4 @@
-import {SET_ERROR, REMOVE_ERROR, SIGN_IN, SET_USER} from './constants'
+import {SET_ERROR, REMOVE_ERROR, SIGN_IN, SET_USER, LOGOUT} from './constants'
 
 const initialState = {
     isAuthenticated: false,
@@ -24,7 +24,15 @@ export const authReducer = (state = initialState, {type, payload}) => {
         case SET_USER: {
             return {
                 ...state,
+                isAuthenticated: true,
                 user: payload
+            }
+        }
+        case LOGOUT: {
+            return {
+                ...state,
+                isAuthenticated: false,
+                user: {},
             }
         }
         case REMOVE_ERROR: {

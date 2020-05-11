@@ -6,11 +6,15 @@ const AuthService = {
     },
 
     signIn(formValues) {
-        return BaseAxiosInstance.post('/api/login', formValues)
+        return BaseAxiosInstance.post('/api/login', formValues);
+    },
+
+    logout() {
+        return BaseAxiosInstance.post('/api/logout');
     },
 
     getUser() {
-        return BaseAxiosInstance.get('/api/user')
+        return BaseAxiosInstance.get('/api/user');
     },
 };
 

@@ -1,13 +1,15 @@
 import React from 'react';
 
 const HomePage = (
-  {}
+    {}
 ) => {
-  return (
-    <>
-        Home
-      </>
-  );
+    return (
+        <main>
+            <div className="container">
+                home
+            </div>
+        </main>
+    );
 };
 
 HomePage.propTypes = {};

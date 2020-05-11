@@ -3,4 +3,13 @@
 .header {
   padding: spacing(3) 0;
   background-color: $dark-blue;
+  .link {
+    color: $link-color;
+    transition: 0.2s;
+
+    &:hover {
+      color: $color-white;
+      transition: 0.2s;
+    }
+  }
 }
