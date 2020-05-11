@@ -1,8 +1,12 @@
 import BaseAxiosInstance from 'libs/axios/BaseAxiosInstance';
 
 const AuthService = {
+    // signUp(formValues) {
+    //     return BaseAxiosInstance.post('/sign-up', formValues);
+    // },
+
     signUp(formValues) {
-        return BaseAxiosInstance.post('/sign-up', formValues);
+        return BaseAxiosInstance.post('/api/register', formValues);
     },
 
     signIn(formValues) {

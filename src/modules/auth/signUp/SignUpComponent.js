@@ -1,128 +1,126 @@
-import React, {} from 'react';
+import React from 'react';
 import * as PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { routesByName } from 'constants/routes';
-import { formFields } from 'modules/auth/signUp/constants';
+import {useFormik} from "formik";
+import {formFields} from "./constants";
+import * as Yup from 'yup';
+import Input from "components/ui/Inputs/Base";
+import PasswordInput from "components/ui/Inputs/Password";
+import Button from "components/ui/Button/base";
+import classes from './SignUp.module.scss';
+import {connect} from "react-redux";
+import {SignUp as signUpAction} from "modules/auth/store/actions";
 
-// TODO: final form or formic integration
 const SignUpComponent = (
-  {
-    onChange,
-    onSubmit,
-    values,
-    submitting,
-    error,
-  }
+    {
+        signUpAction,
+        error,
+    }
 ) => {
+    const {handleChange, handleSubmit, errors, values, touched} = useFormik({
+        initialValues: {
+            [formFields.name]: '',
+            [formFields.email]: '',
+            [formFields.password]: '',
+            [formFields.passwordConfirm]: '',
+        },
 
-  return (
-      <section>
-        <div className="container">
-          <h1>
-            Start your online visit
-          </h1>
-          <h6>
-            This information will help us get you set up with a doctor and make sure you're eligible for treatment
-          </h6>
-          <div className="mb-5">
-            Already have a Rize account?
-            {' '}
-            <Link to={routesByName.signIn}>
-              Login
-            </Link>
-          </div>
-          {
-            error && (
-                <div className="alert alert-danger mb-2" role="alert">
-                  {error}
+        validationSchema: Yup.object({
+            name: Yup.string().required('Username is required'),
+            email: Yup.string().email('Email is invalid').required('Email is required'),
+            password: Yup.string().min(6).required('Password is required'),
+            password_confirmation: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Confirm Password is required')
+        }),
+
+        onSubmit(values) {
+            signUpAction(values)
+        },
+    });
+
+    return (
+        <section>
+            <div className="container">
+                <div className={classes.wrapperRegister}>
+                    <form onSubmit={handleSubmit}>
+                        <Input
+                            id={formFields.name}
+                            spacing='mb-5'
+                            name={formFields.name}
+                            type={formFields.name}
+                            placeholder={formFields.name}
+                            onChange={handleChange}
+                            label={formFields.name}
+                            value={values.name}
+                            error={errors.name ? errors.name : null}
+                            errorInput={errors.name && touched.name ? 'errorInput' : null}
+                            errorLabel={errors.name && touched.name ? 'errorLabel' : null}
+                        />
+                        <Input
+                            id={formFields.email}
+                            spacing='mb-5'
+                            name={formFields.email}
+                            type={formFields.email}
+                            placeholder={formFields.email}
+                            onChange={handleChange}
+                            label={formFields.email}
+                            value={values.email}
+                            error={errors.email ? errors.email : null}
+                            errorInput={errors.email && touched.email ? 'errorInput' : null}
+                            errorLabel={errors.email && touched.email ? 'errorLabel' : null}
+                        />
+
+                        <PasswordInput
+                            id={formFields.password}
+                            spacing='mb-5'
+                            name={formFields.password}
+                            placeholder={formFields.password}
+                            onChange={handleChange}
+                            label={formFields.password}
+                            value={values.password}
+                            error={errors.password ? errors.password : null}
+                            errorInput={errors.password && touched.password ? 'errorInput' : null}
+                            errorLabel={errors.password && touched.password ? 'errorLabel' : null}
+                        />
+                        <PasswordInput
+                            id={formFields.passwordConfirm}
+                            spacing='mb-5'
+                            name={formFields.passwordConfirm}
+                            placeholder='password Confirm'
+                            onChange={handleChange}
+                            label='password Confirm'
+                            value={values.password_confirmation}
+                            error={errors.password_confirmation ? errors.password_confirmation : null}
+                            errorInput={errors.password_confirmation && touched.password_confirmation ? 'errorInput' : null}
+                            errorLabel={errors.password_confirmation && touched.password_confirmation ? 'errorLabel' : null}
+                        />
+
+                        <Button text='Sign Up'/>
+                    </form>
+                    {
+                        error && <div className={classes.messageError}>{error}</div>
+                    }
                 </div>
-            )
-          }
-          <form onSubmit={onSubmit}>
-            <div className="form-group row align-items-center">
-              <label htmlFor={formFields.username} className="col-auto mb-0">
-                Email address
-              </label>
-              <div className="col">
-                <input
-                    value={values[formFields.username]}
-                    onChange={onChange}
-                    type="email" className="form-control" name={formFields.username} id={formFields.username}
-                />
-              </div>
             </div>
-            <div className="form-group row align-items-center">
-              <label className="col-auto mb-0">
-                Biological Sex
-              </label>
-              <div className="col">
-                <div className="row">
-                  <div className="col-auto d-flex align-items-center">
-                    <input
-                        type="radio" name={formFields.gender} value="1" className="mr-2"
-                        onChange={onChange}
-                        checked={values[formFields.gender] == '1'}
-                        id={formFields.gender + '-1'}
-                    />
-                    <label htmlFor={formFields.gender + '-1'} className="mb-0">
-                      Male
-                    </label>
-                  </div>
-                  <div className="col-auto d-flex align-items-center">
-                    <input
-                        type="radio" name={formFields.gender} value="2" className="mr-2"
-                        onChange={onChange}
-                        id={formFields.gender + '-2'}
-                        checked={values[formFields.gender] == '2'}
-                    />
-                    <label htmlFor={formFields.gender + '-2'} className="mb-0">
-                      Female
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="form-group row align-items-center">
-              <label htmlFor={formFields.birthDate} className="col-auto mb-0">
-                Birthdate
-              </label>
-              <div className="col">
-                <input type="date" className="form-control" name={formFields.birthDate} id={formFields.birthDate}
-                       onChange={onChange}
-                       value={values[formFields.birthDate]}
-                />
-              </div>
-            </div>
-            <div className="form-group row align-items-center">
-              <label htmlFor={formFields.zipCode} className="col-auto mb-0">
-                ZIP Code
-              </label>
-              <div className="col">
-                <input name={formFields.zipCode} id={formFields.zipCode} className="form-control"
-                       onChange={onChange}
-                       value={values[formFields.zipCode]}
-                />
-              </div>
-            </div>
-            <button type="submit" className="btn btn-primary" disabled={submitting}>
-              Submit
-            </button>
-          </form>
-        </div>
-      </section>
-  );
-};
+        </section>
+    )
+}
 
 SignUpComponent.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  values: PropTypes.shape({}).isRequired,
-  submitting: PropTypes.bool.isRequired,
-  error: PropTypes.node,
-};
+    signUpAction: PropTypes.func.isRequired,
+    user: PropTypes.object,
+    error: PropTypes.string,
+}
 
-SignUpComponent.defaultProps = {
-  error: null,
-};
+SignUpComponent.defaultProps = {}
 
-export default SignUpComponent;
+const mapStateToProps = ({auth: {user}}) => ({
+    user
+});
+
+const mapDispatchToProps = dispatch => ({
+    signUpAction: values => {
+        dispatch(signUpAction(values));
+    }
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpComponent);

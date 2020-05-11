@@ -1,6 +1,6 @@
 export const formFields = {
-  username: 'username',
-  gender: 'gender',
-  birthDate: 'dob',
-  zipCode: 'zip',
+    name: 'name',
+    email: 'email',
+    password:'password',
+    passwordConfirm:'password_confirmation'
 };

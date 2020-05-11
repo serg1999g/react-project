@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import * as PropTypes from 'prop-types';
-import SignUpComponent from 'modules/auth/signUp/SignUpComponent';
-import { formFields } from 'modules/auth/signUp/constants';
+import SignUpComponent from 'modules/auth/registr/SignUpComponent';
+import { formFields } from 'modules/auth/registr/constants';
 import AuthService from 'modules/auth/AuthService';
 import { routesByName } from 'constants/routes';
 

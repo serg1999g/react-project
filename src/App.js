@@ -4,7 +4,8 @@ import {useSelector, useDispatch} from 'react-redux';
 import {routesByName} from 'constants/routes';
 import HomePage from 'modules/pages/HomePage';
 import Page404 from 'modules/pages/Page404';
-import SignUpContainer from 'modules/auth/signUp/SignUpContainer';
+// import SignUpContainer from 'modules/auth/registr/SignUpContainer';
+import SignUpComponent from "./modules/auth/signUp/SignUpComponent";
 import SignInComponent from "./modules/auth/signIn/signInComponent";
 import Header from "components/partials/Header";
 import Footer from "components/partials/Footer";
@@ -33,7 +34,7 @@ function App() {
                 <Switch>
                     <PrivateRoute exact path="/" component={HomePage}/>
                     <PublicRoute exact path={routesByName.signIn} component={SignInComponent}/>
-                    <PublicRoute exact path={routesByName.signUp} component={SignUpContainer}/>
+                    <PublicRoute exact path={routesByName.signUp} component={SignUpComponent}/>
                     <Route exact path="*" component={Page404}/>
                 </Switch>
             <Footer/>
