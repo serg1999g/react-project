@@ -112,8 +112,8 @@ SignUpComponent.propTypes = {
 
 SignUpComponent.defaultProps = {}
 
-const mapStateToProps = ({auth: {user}}) => ({
-    user
+const mapStateToProps = ({auth: {user, error}}) => ({
+    user, error
 });
 
 const mapDispatchToProps = dispatch => ({
