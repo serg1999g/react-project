@@ -10,7 +10,7 @@ export const signIn = (data) => async dispatch => {
         const response = await AuthService.signIn(data);
         const token = response.data.access_token;
         localStorage.setItem('token', token);
-        const user = await AuthService.getUser();
+        const user = await AuthService.AuthUser();
         dispatch({
             type: SIGN_IN,
             payload: user
@@ -28,7 +28,7 @@ export const SignUp = (data) => async dispatch => {
         const response = await AuthService.signUp(data);
         const token = response.data.access_token;
         localStorage.setItem('token', token);
-        const user = await AuthService.getUser();
+        const user = await AuthService.AuthUser();
         dispatch({
             type: SIGN_UP,
             payload: user,
@@ -60,7 +60,7 @@ export const logout = () => async dispatch => {
 
 export const setUser = () => async dispatch => {
     try {
-        const user = await AuthService.getUser()
+        const user = await AuthService.AuthUser()
         dispatch({
             type: SET_USER,
             payload: user

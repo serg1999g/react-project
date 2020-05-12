@@ -17,8 +17,12 @@ const AuthService = {
         return BaseAxiosInstance.post('/api/logout');
     },
 
-    getUser() {
-        return BaseAxiosInstance.get('/api/user');
+    AuthUser() {
+        return BaseAxiosInstance.get('/api/user/auth-user');
+    },
+
+    allUser() {
+        return BaseAxiosInstance.get('api/user');
     },
 };
 
