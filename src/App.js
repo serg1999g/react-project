@@ -12,6 +12,7 @@ import {PrivateRoute} from "./routers/PrivateRoute";
 import {PublicRoute} from './routers/PublicRoute';
 import {setUser} from "./modules/auth/store/actions";
 import isEmpty from 'lodash/isEmpty';
+import MissionsComponent from "./modules/mission/missions/MissionsComponent";
 
 function App() {
     const user = useSelector(state => state.auth.user);
@@ -33,6 +34,7 @@ function App() {
             <Switch>
                 <PrivateRoute exact path="/" component={HomePage}/>
                 <PublicRoute exact path={routesByName.signIn} component={SignInComponent}/>
+                <PrivateRoute exact path={routesByName.missions} component={MissionsComponent}/>
                 <PublicRoute exact path={routesByName.signUp} component={SignUpComponent}/>
                 <Route exact path="*" component={Page404}/>
             </Switch>

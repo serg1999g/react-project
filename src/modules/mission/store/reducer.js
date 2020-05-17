@@ -1,7 +1,7 @@
 import {SET_MISSIONS, SET_ERROR, REMOVE_ERROR} from "./constants";
 
 const initialState = {
-    mission: [],
+    mission: {},
     error: null
 }
 

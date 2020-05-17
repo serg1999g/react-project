@@ -6,7 +6,8 @@ import clsx from 'clsx';
 
 const Mission = (
     {
-        title,
+        id,
+        name,
         image,
         path,
         description,
@@ -18,7 +19,7 @@ const Mission = (
         <div className={clsx(classes.mission, 'd-flex')}>
             <img className={classes.image} src={image} alt="mission"/>
             <div className={classes.blockWithDescription}>
-                <BaseLink path={path} title={title} spacing={spacing}/>
+                <BaseLink path={path} title={name} spacing={spacing}/>
                 <p className={classes.description}>
                     {description}
                 </p>
@@ -28,13 +29,16 @@ const Mission = (
 };
 
 Mission.propTypes = {
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string,
     description: PropTypes.string.isRequired,
     path: PropTypes.string,
     spacing: PropTypes.string,
 };
 
-Mission.defaultProps = {};
+Mission.defaultProps = {
+    path: '/',
+};
 
 export default Mission;

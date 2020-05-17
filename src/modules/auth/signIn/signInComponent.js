@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import * as PropTypes from 'prop-types';
 import Input from "components/ui/Inputs/Base";
 import {formFields} from "modules/auth/signIn/constants";

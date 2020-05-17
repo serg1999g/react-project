@@ -22,7 +22,10 @@ const Header = (
                 <div className='d-flex justify-content-between align-items-center'>
                     <div>
                         {isAuthenticated ?
-                            <BaseLink path={routesByName.home} title='Home'/>
+                            <div>
+                                <BaseLink path={routesByName.home} title='Home' spacing='mr-3'/>
+                                <BaseLink path={routesByName.missions} title='Missions'/>
+                            </div>
                             : null
                         }
 
