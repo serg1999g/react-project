@@ -8,6 +8,6 @@ export default function createRootReducer(history) {
   return combineReducers({
     auth: authReducer,
     router: connectRouter(history),
-    mission: MissionReducer,
+    missions: MissionReducer,
   });
 }

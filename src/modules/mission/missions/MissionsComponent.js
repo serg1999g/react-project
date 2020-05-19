@@ -2,27 +2,27 @@ import React, {useEffect, useCallback, useState} from 'react';
 import * as PropTypes from 'prop-types';
 import Mission from "components/sections/mission";
 import {useDispatch} from 'react-redux';
-import {setMission} from 'modules/mission/store/actions';
+import {setMissions} from 'modules/mission/store/actions';
 import isEmpty from 'lodash/isEmpty';
 import {connect} from "react-redux";
 import classes from './Missions.module.scss';
 
 const MissionsComponent = (
     {
-        mission,
+        missions,
     }
 ) => {
     const dispatch = useDispatch();
     const [posts, setPosts] = useState(null);
 
     const fetchApi = useCallback(async () => {
-        await dispatch(setMission());
-        setPosts(mission.data)
+        await dispatch(setMissions());
+        setPosts(missions.data)
     });
 
     useEffect(() => {
-        if (!isEmpty(mission)) {
-            setPosts(mission.data);
+        if (!isEmpty(missions)) {
+            setPosts(missions.data);
             return;
         }
         fetchApi();
@@ -37,6 +37,7 @@ const MissionsComponent = (
             <div className="container">
                 {posts.map(post => (
                     <Mission
+                        path={`/missions/${post.id}`}
                         key={post.id}
                         name={post.name}
                         description={post.description}
@@ -48,15 +49,15 @@ const MissionsComponent = (
 };
 
 MissionsComponent.propTypes = {
-    mission: PropTypes.object,
+    missions: PropTypes.object,
     error: PropTypes.string,
 };
 
 MissionsComponent.defaultProps = {
-    mission: {},
+    missions: {},
 };
-const mapStateToProps = ({mission: {mission, error}}) => ({
-    mission, error
+const mapStateToProps = ({missions: {missions, error}}) => ({
+    missions, error
 });
 
 export default connect(mapStateToProps)(MissionsComponent);

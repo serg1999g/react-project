@@ -1,13 +1,20 @@
-import {SET_MISSIONS, SET_ERROR, REMOVE_ERROR} from "./constants";
+import {SET_MISSIONS, SET_ERROR, REMOVE_ERROR, SET_MISSION} from "./constants";
 
 const initialState = {
-    mission: {},
-    error: null
+    missions: {},
+    error: null,
+    mission:{},
 }
 
 export const MissionReducer = (state = initialState, {type, payload}) => {
     switch (type) {
         case SET_MISSIONS: {
+            return {
+                ...state,
+                missions: payload,
+            }
+        }
+        case SET_MISSION: {
             return {
                 ...state,
                 mission: payload,
