@@ -9,6 +9,10 @@ const MissionService = {
     getMission(id) {
         return BaseAxiosInstance.get(`/api/mission/${id}/show`)
     },
+
+    editMission(id) {
+        return BaseAxiosInstance.put(`/api/mission/${id}/edit`)
+    },
 }
 
 export default MissionService;

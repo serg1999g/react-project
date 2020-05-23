@@ -1,6 +1,6 @@
 export const routesByName = {
   home: '/',
-  signIn: '/login',
+  signIn: '/sign-in',
   signUp: '/sign-up',
   missions:'/missions',
   roteWithParams(param = ':param'){

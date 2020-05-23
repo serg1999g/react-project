@@ -1,40 +1,22 @@
-import React from 'react';
+import React, {} from 'react';
 import * as PropTypes from 'prop-types';
-import {useFormik} from "formik";
-import {formFields} from "./constants";
-import * as Yup from 'yup';
+import classes from "./SignUp.module.scss";
 import Input from "components/ui/Inputs/Base";
+import {formFields} from "./constants";
 import PasswordInput from "components/ui/Inputs/Password";
 import Button from "components/ui/Button/base";
-import classes from './SignUp.module.scss';
-import {connect} from "react-redux";
-import {SignUp as signUpAction} from "modules/auth/store/actions";
+
 
 const SignUpComponent = (
     {
-        signUpAction,
-        error,
+        handleSubmit,
+        handleChange,
+        values,
+        errors,
+        touched,
+        error
     }
 ) => {
-    const {handleChange, handleSubmit, errors, values, touched} = useFormik({
-        initialValues: {
-            [formFields.name]: '',
-            [formFields.email]: '',
-            [formFields.password]: '',
-            [formFields.passwordConfirm]: '',
-        },
-
-        validationSchema: Yup.object({
-            name: Yup.string().required('Username is required'),
-            email: Yup.string().email('Email is invalid').required('Email is required'),
-            password: Yup.string().min(6).required('Password is required'),
-            password_confirmation: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Confirm Password is required')
-        }),
-
-        onSubmit(values) {
-            signUpAction(values)
-        },
-    });
 
     return (
         <section>
@@ -101,26 +83,21 @@ const SignUpComponent = (
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
 SignUpComponent.propTypes = {
-    signUpAction: PropTypes.func.isRequired,
-    user: PropTypes.object,
+    handleSubmit: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    values: PropTypes.object,
+    errors: PropTypes.object,
     error: PropTypes.string,
-}
+    touched: PropTypes.object,
+};
 
-SignUpComponent.defaultProps = {}
+SignUpComponent.defaultProps = {
+    errors: {},
+    error: '',
+};
 
-const mapStateToProps = ({auth: {user, error}}) => ({
-    user, error
-});
-
-const mapDispatchToProps = dispatch => ({
-    signUpAction: values => {
-        dispatch(signUpAction(values));
-    }
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpComponent);
+export default SignUpComponent;

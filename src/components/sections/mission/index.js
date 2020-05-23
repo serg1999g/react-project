@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React, {useMemo} from 'react';
 import * as PropTypes from 'prop-types';
 import classes from './Mission.module.scss';
 import BaseLink from "components/ui/Link/Base";
@@ -15,9 +15,17 @@ const Mission = (
     }
 ) => {
 
+    const renderImage = useMemo(() => image.map(({image, id}) => (
+        <img id={id}
+             key={`item-${id}`}
+             src={image}
+        />
+    )), [image]);
+
     return (
-        <div className={clsx(classes.mission, 'd-flex')}>
-            <img className={classes.image} src={image} alt="mission"/>
+        <div id={id} className={clsx(classes.mission, 'd-flex')}>
+            {renderImage}
+
             <div className={classes.blockWithDescription}>
                 <BaseLink path={path} title={name} spacing={spacing}/>
                 <p className={classes.description}>
@@ -31,7 +39,7 @@ const Mission = (
 Mission.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    image: PropTypes.string,
+    image: PropTypes.array,
     description: PropTypes.string.isRequired,
     path: PropTypes.string,
     spacing: PropTypes.string,
@@ -39,6 +47,7 @@ Mission.propTypes = {
 
 Mission.defaultProps = {
     path: '/',
+    image:[],
 };
 
 export default Mission;

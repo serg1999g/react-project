@@ -1,38 +1,22 @@
-import React from 'react';
+import React, {} from 'react';
 import * as PropTypes from 'prop-types';
+import classes from "./SignIn.module.scss";
 import Input from "components/ui/Inputs/Base";
-import {formFields} from "modules/auth/signIn/constants";
-import Button from "components/ui/Button/base";
-import {useFormik} from "formik";
-import * as Yup from 'yup';
-import {signIn as signInAction} from 'modules/auth/store/actions'
-import {connect} from "react-redux";
+import {formFields} from "./constants";
 import PasswordInput from "components/ui/Inputs/Password";
-import classes from './SignIn.module.scss';
+import Button from "components/ui/Button/base";
 
 
 const SignInComponent = (
     {
-        signInAction,
-        error,
+        handleSubmit,
+        handleChange,
+        values,
+        errors,
+        touched,
+        error
     }
 ) => {
-
-    const {handleChange, handleSubmit, errors, values, touched} = useFormik({
-        initialValues: {
-            [formFields.email]: '',
-            [formFields.password]: '',
-        },
-
-        validationSchema: Yup.object({
-            email: Yup.string().email('Email is invalid').required('Email is required'),
-            password: Yup.string().min(6).required('Password is required'),
-        }),
-
-        onSubmit(values) {
-            signInAction(values)
-        },
-    });
 
     return (
         <section>
@@ -80,21 +64,17 @@ const SignInComponent = (
 };
 
 SignInComponent.propTypes = {
-    signInAction: PropTypes.func.isRequired,
-    user: PropTypes.object,
+    handleSubmit: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    values: PropTypes.object,
+    errors: PropTypes.object,
     error: PropTypes.string,
+    touched: PropTypes.object,
 };
 
-SignInComponent.defaultProps = {};
+SignInComponent.defaultProps = {
+    errors: {},
+    error: '',
+};
 
-const mapStateToProps = ({auth: {user, error}}) => ({
-    user, error
-});
-
-const mapDispatchToProps = dispatch => ({
-    signInAction: values => {
-        dispatch(signInAction(values));
-    }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignInComponent);
+export default SignInComponent;
