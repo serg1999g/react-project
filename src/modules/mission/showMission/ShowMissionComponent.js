@@ -1,6 +1,7 @@
 import React, {useMemo} from 'react';
 import * as PropTypes from 'prop-types';
 import Mission from "components/sections/mission";
+import ShowMission from "../../../components/sections/ShowMission";
 
 
 const ShowMissionComponent = (
@@ -9,7 +10,7 @@ const ShowMissionComponent = (
     }
 ) => {
     const renderPost = useMemo(() => item.map(({...props}) => (
-        <Mission
+        <ShowMission
             key={props.id}
             {...props}
         />

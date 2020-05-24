@@ -9,14 +9,14 @@ const MissionsComponent = (
         items
     }
 ) => {
-    const renderPosts = useMemo(() => items.map(({id, image, name, description}) => (
+    const renderPosts = useMemo(() => items.map(({id, images, name, description}) => (
         <Mission
             key={id}
             id={id}
             path={`/missions/${id}`}
             description={description}
             name={name}
-            image={image}
+            image={images}
         />
     )), [items]);
 

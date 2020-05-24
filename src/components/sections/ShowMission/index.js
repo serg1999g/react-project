@@ -1,56 +1,56 @@
 import React, {useMemo} from 'react';
 import * as PropTypes from 'prop-types';
-import classes from './Mission.module.scss';
-import BaseLink from "components/ui/Link/Base";
-import clsx from 'clsx';
+import classes from "./ShowMissions.module.scss";
 import Image from "components/ui/Image";
+import clsx from 'clsx';
 
-const Mission = (
+const ShowMission = (
     {
         id,
         name,
-        image,
-        path,
         description,
-        spacing
+        content,
+        images,
     }
 ) => {
-
-    console.log(image)
-
-    const renderImage = useMemo(() => image.map(({image, id}) => (
+    const renderImage = useMemo(() => images.map(({image, id}) => (
         <Image
             key={id}
             id={id}
             image={image}
+            size='large'
         />
-    )), [image]);
+    )), [images]);
 
     return (
         <div id={id} className={clsx(classes.mission, 'd-flex')}>
             {renderImage}
             <div className={classes.blockWithDescription}>
-                <BaseLink path={path} title={name} spacing={spacing}/>
+                <h4>{name}</h4>
                 <p className={classes.description}>
                     {description}
+                </p>
+                <p className={classes.content}>
+                    {content}
                 </p>
             </div>
         </div>
     );
 };
 
-Mission.propTypes = {
+ShowMission.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.array,
     description: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
     path: PropTypes.string,
     spacing: PropTypes.string,
 };
 
-Mission.defaultProps = {
+ShowMission.defaultProps = {
     path: '/',
     image: [],
 };
 
-export default Mission;
+export default ShowMission;
