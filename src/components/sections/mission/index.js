@@ -15,9 +15,6 @@ const Mission = (
         spacing
     }
 ) => {
-
-    console.log(image)
-
     const renderImage = useMemo(() => image.map(({image, id}) => (
         <Image
             key={id}

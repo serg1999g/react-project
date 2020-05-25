@@ -15,7 +15,7 @@ const MissionsContainer = (
 
     const fetchApi = useCallback(async () => {
         await dispatch(setMissions());
-    });
+    }, []);
 
     useEffect(() => {
         if (!isEmpty(missions)) {

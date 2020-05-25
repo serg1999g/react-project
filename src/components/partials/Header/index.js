@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {} from 'react';
 import classes from './Header.module.scss';
 import BaseLink from "components/ui/Link/Base";
 import {useSelector, useDispatch} from 'react-redux';
@@ -37,7 +37,10 @@ const Header = (
                                     <BaseLink path={routesByName.signIn} title='Sign In' spacing='mr-2'/>
                                     <BaseLink path={routesByName.signUp} title='Sign Up'/>
                                 </div>
-                                : <a className={classes.link} href="#" onClick={Logout}>Logout</a>
+                                : <div>
+                                    <BaseLink path={routesByName.profile} title='Profile' spacing='mr-3'/>
+                                    <a className={classes.link} href="#" onClick={Logout}>Logout</a>
+                                </div>
                         }
 
                     </div>
