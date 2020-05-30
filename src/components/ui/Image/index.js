@@ -13,7 +13,7 @@ const Image = (
 
     return (
         <div className={classes.blockImage}>
-            <img id={id} src={image} className={clsx(classes.image, classes[size])}/>
+            <img  id={id} src={image} className={clsx(classes.image, classes[size])}/>
         </div>
     );
 };

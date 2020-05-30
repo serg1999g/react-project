@@ -24,7 +24,7 @@ const Header = (
                         {isAuthenticated ?
                             <div>
                                 <BaseLink path={routesByName.home} title='Home' spacing='mr-3'/>
-                                <BaseLink path={routesByName.posts} title='posts'/>
+                                <BaseLink path={routesByName.posts} title='Posts'/>
                             </div>
                             : null
                         }

@@ -1,4 +1,6 @@
 import React, {} from 'react';
+import UploadImage from "../../components/ui/UploadImage";
+import AuthProfileContainer from "../profile/AuthProfile/AuthProfileContainer";
 
 
 const HomePage = (
@@ -9,6 +11,8 @@ const HomePage = (
         <main className='my-5'>
             <div className="container">
                 home
+                <UploadImage/>
+                <AuthProfileContainer/>
             </div>
         </main>
     );

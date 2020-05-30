@@ -9,8 +9,6 @@ const AuthProfileComponent = (
         posts,
     }
 ) => {
-
-    console.log(posts)
     const renderUserInfo = useMemo(() => {
         if (!user) {
             return null;
