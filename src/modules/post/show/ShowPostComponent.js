@@ -1,16 +1,15 @@
 import React, {useMemo} from 'react';
 import * as PropTypes from 'prop-types';
-import Mission from "components/sections/mission";
-import ShowMission from "../../../components/sections/ShowMission";
+import ShowPost from "components/sections/ShowPost";
 
 
-const ShowMissionComponent = (
+const ShowPostComponent = (
     {
         item
     }
 ) => {
     const renderPost = useMemo(() => item.map(({...props}) => (
-        <ShowMission
+        <ShowPost
             key={props.id}
             {...props}
         />
@@ -25,12 +24,12 @@ const ShowMissionComponent = (
     );
 };
 
-ShowMissionComponent.propTypes = {
+ShowPostComponent.propTypes = {
     item: PropTypes.array,
 };
 
-ShowMissionComponent.defaultProps = {
+ShowPostComponent.defaultProps = {
     item: []
 };
 
-export default ShowMissionComponent;
+export default ShowPostComponent;

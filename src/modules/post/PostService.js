@@ -1,18 +1,18 @@
 import BaseAxiosInstance from "libs/axios/BaseAxiosInstance";
 
 
-const MissionService = {
-    allMission() {
+const PostService = {
+    allPost() {
         return BaseAxiosInstance.get('/api/mission')
     },
 
-    getMission(id) {
+    getPost(id) {
         return BaseAxiosInstance.get(`/api/mission/${id}/show`)
     },
 
-    editMission(id) {
+    editPost(id) {
         return BaseAxiosInstance.put(`/api/mission/${id}/edit`)
     },
 }
 
-export default MissionService;
+export default PostService;

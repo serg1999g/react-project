@@ -1,10 +1,10 @@
 import React, {useMemo} from 'react';
 import * as PropTypes from 'prop-types';
-import classes from "./ShowMissions.module.scss";
+import classes from "./ShowPosts.module.scss";
 import Image from "components/ui/Image";
 import clsx from 'clsx';
 
-const ShowMission = (
+const ShowPost = (
     {
         id,
         name,
@@ -23,7 +23,7 @@ const ShowMission = (
     )), [images]);
 
     return (
-        <div id={id} className={clsx(classes.mission, 'd-flex')}>
+        <div id={id} className={clsx(classes.post, 'd-flex')}>
             {renderImage}
             <div className={classes.blockWithDescription}>
                 <h4>{name}</h4>
@@ -38,7 +38,7 @@ const ShowMission = (
     );
 };
 
-ShowMission.propTypes = {
+ShowPost.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.array,
@@ -48,9 +48,9 @@ ShowMission.propTypes = {
     spacing: PropTypes.string,
 };
 
-ShowMission.defaultProps = {
+ShowPost.defaultProps = {
     path: '/',
     image: [],
 };
 
-export default ShowMission;
+export default ShowPost;

@@ -40,7 +40,7 @@ Button.propTypes = {
     className: PropTypes.string,
     spacing: PropTypes.string,
     variant: PropTypes.oneOf(['primary', 'outlinePrimary', 'danger', 'secondary', 'success', 'primaryNotBg', 'custom', 'circle', 'disableCircle', 'facebook']),
-    size: PropTypes.oneOf(['small', 'medium', 'large', 'customSize', 'MissionSearchBtn', 'circleSize']),
+    size: PropTypes.oneOf(['small', 'medium', 'large', 'customSize', 'postsearchBtn', 'circleSize']),
     onClick: PropTypes.func,
     type: PropTypes.string,
     disabled: PropTypes.bool,

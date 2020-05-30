@@ -1,11 +1,11 @@
 import React, {useMemo} from 'react';
 import * as PropTypes from 'prop-types';
-import classes from './Mission.module.scss';
+import classes from './Post.module.scss';
 import BaseLink from "components/ui/Link/Base";
 import clsx from 'clsx';
 import Image from "components/ui/Image";
 
-const Mission = (
+const Post = (
     {
         id,
         name,
@@ -24,7 +24,7 @@ const Mission = (
     )), [image]);
 
     return (
-        <div id={id} className={clsx(classes.mission, 'd-flex')}>
+        <div id={id} className={clsx(classes.post, 'd-flex')}>
             {renderImage}
             <div className={classes.blockWithDescription}>
                 <BaseLink path={path} title={name} spacing={spacing}/>
@@ -36,7 +36,7 @@ const Mission = (
     );
 };
 
-Mission.propTypes = {
+Post.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.array,
@@ -45,9 +45,9 @@ Mission.propTypes = {
     spacing: PropTypes.string,
 };
 
-Mission.defaultProps = {
+Post.defaultProps = {
     path: '/',
     image: [],
 };
 
-export default Mission;
+export default Post;

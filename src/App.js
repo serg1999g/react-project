@@ -11,9 +11,9 @@ import {PrivateRoute} from "./routers/PrivateRoute";
 import {PublicRoute} from './routers/PublicRoute';
 import {setUser} from "./modules/auth/store/actions";
 import isEmpty from 'lodash/isEmpty';
-import MissionsContainer from "./modules/mission/missions/MissionsContainer";
+import postsContainer from "./modules/post/posts/PostsContainer";
 import SignInContainer from "./modules/auth/signIn/signInContainer";
-import MissionPage from "./modules/pages/MissionPage";
+import PostPage from "./modules/pages/PostPage";
 import AuthProfileContainer from "./modules/profile/AuthProfile/AuthProfileContainer";
 
 function App() {
@@ -36,9 +36,9 @@ function App() {
             <Switch>
                 <PrivateRoute exact path="/" component={HomePage}/>
                 <PublicRoute exact path={routesByName.signIn} component={SignInContainer}/>
-                <PrivateRoute exact path={routesByName.missions} component={MissionsContainer}/>
+                <PrivateRoute exact path={routesByName.posts} component={postsContainer}/>
                 <PrivateRoute exact path={routesByName.profile} component={AuthProfileContainer}/>
-                <PrivateRoute exact path="/missions/:id" component={MissionPage}/>
+                <PrivateRoute exact path="/posts/:id" component={PostPage}/>
                 <PublicRoute exact path={routesByName.signUp} component={SignUpContainer}/>
                 <Route exact path="*" component={Page404}/>
             </Switch>

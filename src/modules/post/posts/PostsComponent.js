@@ -1,19 +1,19 @@
 import React, {useMemo} from 'react';
 import * as PropTypes from 'prop-types';
-import classes from "./Missions.module.scss";
-import Mission from "components/sections/mission";
+import classes from "./Posts.module.scss";
+import Post from "components/sections/post";
 
 
-const MissionsComponent = (
+const PostsComponent = (
     {
         items
     }
 ) => {
     const renderPosts = useMemo(() => items.map(({id, images, name, description}) => (
-        <Mission
+        <Post
             key={id}
             id={id}
-            path={`/missions/${id}`}
+            path={`/posts/${id}`}
             description={description}
             name={name}
             image={images}
@@ -21,7 +21,7 @@ const MissionsComponent = (
     )), [items]);
 
     return (
-        <section className={classes.sectionMissions}>
+        <section className={classes.sectionPosts}>
             <div className="container">
                 {renderPosts}
             </div>
@@ -29,12 +29,12 @@ const MissionsComponent = (
     );
 };
 
-MissionsComponent.propTypes = {
+PostsComponent.propTypes = {
     items: PropTypes.array,
 };
 
-MissionsComponent.defaultProps = {
+PostsComponent.defaultProps = {
     items: [],
 };
 
-export default MissionsComponent;
+export default PostsComponent;

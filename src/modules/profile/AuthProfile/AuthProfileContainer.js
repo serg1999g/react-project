@@ -20,9 +20,9 @@ const AuthProfileContainer = (
             : null
     }, [profile])
 
-    const missions = useMemo(() => {
-        return profile && profile.mission
-            ? profile.mission
+    const posts = useMemo(() => {
+        return profile && profile.post
+            ? profile.post
             : null
     }, [profile])
 
@@ -33,7 +33,7 @@ const AuthProfileContainer = (
 
     return (
         <div>
-            <AuthProfileComponent missions={missions} user={user}/>
+            <AuthProfileComponent posts={posts} user={user}/>
         </div>
     );
 };

@@ -6,11 +6,11 @@ import UserProfile from "components/sections/Profile/User";
 const AuthProfileComponent = (
     {
         user,
-        missions,
+        posts,
     }
 ) => {
 
-    console.log(missions)
+    console.log(posts)
     const renderUserInfo = useMemo(() => {
         if (!user) {
             return null;
@@ -36,12 +36,12 @@ const AuthProfileComponent = (
 
 AuthProfileComponent.propTypes = {
     user: PropTypes.array,
-    missions: PropTypes.array,
+    posts: PropTypes.array,
 };
 
 AuthProfileComponent.defaultProps = {
     user: [],
-    missions: [],
+    posts: [],
 };
 
 export default AuthProfileComponent;
