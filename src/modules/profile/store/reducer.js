@@ -1,7 +1,7 @@
 import {SET_ERROR, REMOVE_ERROR, SET_AUTH_PROFILE, UPDATE_PROFILE} from './constants'
 
 const initialState = {
-    profile: {},
+    profile: [],
     isAuthenticated: false,
     error: null,
 };

@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 
 const AuthProfileContainer = (
     {
-        data
+        profile
     }
 ) => {
     const dispatch = useDispatch()
@@ -18,40 +18,33 @@ const AuthProfileContainer = (
     });
 
     const user = useMemo(() => {
-        return data && data.user
-            ? data.user
+        return profile
+            ? profile[0]
             : null
-    }, [data])
-
-    const posts = useMemo(() => {
-        return data && data.post
-            ? data.post
-            : null
-    }, [data])
+    }, [profile])
 
 
     useEffect(() => {
         fetchApi();
     }, [])
-
     return (
         <div>
-            <AuthProfileComponent posts={posts} user={user}/>
+            <AuthProfileComponent user={user}/>
         </div>
     );
 };
 
 AuthProfileContainer.propTypes = {
-    profile: PropTypes.object,
+    profile: PropTypes.array,
     error: PropTypes.string,
 };
 
 AuthProfileContainer.defaultProps = {
-    profile: {},
+    profile: [],
 };
 
-const mapStateToProps = ({profile: {profile: {data, error}}}) => ({
-    data, error
+const mapStateToProps = ({profile: {profile, error}}) => ({
+    profile, error
 });
 
 export default connect(mapStateToProps)(AuthProfileContainer);

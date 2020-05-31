@@ -17,7 +17,15 @@ const UserPostsComponent = (
         return posts.filter(post => post.user_id === user)
             .map((post, index) => {
                 return (
-                    <Post key={index} id={post.id} description={post.description} name={post.name}/>
+                    <Post
+                        key={index}
+                        id={post.id}
+                        description={post.description}
+                        name={post.name}
+                        path={`/posts/${post.id}`}
+                        image={post.image}
+                        editPost={`/posts/${post.id}/edit`}
+                    />
                 )
             }, [posts]);
     });

@@ -4,6 +4,9 @@ import classes from './Post.module.scss';
 import BaseLink from "components/ui/Link/Base";
 import clsx from 'clsx';
 import Image from "components/ui/Image";
+import {deletePost} from "modules/post/store/actions";
+import {useDispatch} from 'react-redux';
+
 
 const Post = (
     {
@@ -12,7 +15,8 @@ const Post = (
         image,
         path,
         description,
-        spacing
+        spacing,
+        editPost,
     }
 ) => {
     const renderImage = useMemo(() => image.map(({image, id}) => (
@@ -23,15 +27,34 @@ const Post = (
         />
     )), [image]);
 
+    const dispatch = useDispatch()
+
+    const handleClick = ((event) => {
+        event.preventDefault();
+        dispatch(deletePost(id))
+    })
+
     return (
-        <div id={id} className={clsx(classes.post, 'd-flex')}>
-            {renderImage}
-            <div className={classes.blockWithDescription}>
-                <BaseLink path={path} title={name} spacing={spacing}/>
-                <p className={classes.description}>
-                    {description}
-                </p>
+        <div id={id} className={clsx(classes.post, 'd-flex align-items-center justify-content-between')}>
+            <div className='d-flex'>
+                {renderImage}
+                <div className={classes.blockWithDescription}>
+                    <BaseLink path={path} title={name} spacing={spacing}/>
+                    <p className={classes.description}>
+                        {description}
+                    </p>
+                </div>
             </div>
+
+            {editPost
+                ?
+                <div>
+
+                    <BaseLink title='Edit' path={editPost}/>
+                    <button key={id} onClick={handleClick}>Delete</button>
+                </div>
+                : null
+            }
         </div>
     );
 };
@@ -42,12 +65,14 @@ Post.propTypes = {
     image: PropTypes.array,
     description: PropTypes.string.isRequired,
     path: PropTypes.string,
+    editPost: PropTypes.string,
     spacing: PropTypes.string,
 };
 
 Post.defaultProps = {
     path: '/',
     image: [],
+    editPost: '',
 };
 
 export default Post;

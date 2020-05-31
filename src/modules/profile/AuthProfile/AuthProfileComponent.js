@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo, useEffect, useState} from 'react';
 import * as PropTypes from 'prop-types';
 import EditProfileContainer from "../edit/EditProfileContainer";
 import {Tabs, Tab} from 'react-bootstrap'
@@ -13,11 +13,6 @@ const AuthProfileComponent = (
         posts,
     }
 ) => {
-    const renderUserInfo = useMemo(() => {
-        if (!user) {
-            return null;
-        }
-    }, [user]);
 
     const [key, setKey] = useState('userInfo');
 
@@ -29,7 +24,7 @@ const AuthProfileComponent = (
                 activeKey={key}
                 onSelect={(k) => setKey(k)}>
                 <Tab
-                    tabClassName={clsx(classes.tab,'d-flex', key === 'userInfo' ? classes.active : null)}
+                    tabClassName={clsx(classes.tab, 'd-flex', key === 'userInfo' ? classes.active : null)}
                     eventKey="userInfo"
                     title='User Info'>
                     <EditProfileContainer user={user}/>
@@ -54,13 +49,13 @@ const AuthProfileComponent = (
 };
 
 AuthProfileComponent.propTypes = {
-    user: PropTypes.array,
-    posts: PropTypes.array,
+    user: PropTypes.object,
+    posts: PropTypes.object,
 };
 
 AuthProfileComponent.defaultProps = {
-    user: [],
-    posts: [],
+    user: {},
+    posts: {},
 };
 
 export default AuthProfileComponent;

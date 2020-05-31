@@ -25,17 +25,17 @@ const PostsContainer = (
     }, [])
 
     return (
-        <PostsComponent items={posts.data}/>
+        <PostsComponent items={posts}/>
     );
 };
 
 PostsContainer.propTypes = {
-    posts: PropTypes.object,
+    posts: PropTypes.array,
     error: PropTypes.string,
 };
 
 PostsContainer.defaultProps = {
-    posts: {},
+    posts: [],
 };
 const mapStateToProps = ({posts: {posts, error}}) => ({
     posts, error

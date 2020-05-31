@@ -13,6 +13,10 @@ const PostService = {
     updatePost(id) {
         return BaseAxiosInstance.put(`/api/mission/${id}/edit`)
     },
+
+    deletePost(id) {
+        return BaseAxiosInstance.delete(`/api/mission/${id}/destroy`)
+    },
 }
 
 export default PostService;

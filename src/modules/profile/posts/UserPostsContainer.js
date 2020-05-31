@@ -2,9 +2,9 @@ import React, {useEffect, useMemo} from 'react';
 import * as PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 import {setPosts} from 'modules/post/store/actions';
-import isEmpty from 'lodash/isEmpty';
 import {connect} from "react-redux";
 import UserPostsComponent from "./UserPostsComponent";
+import isEmpty from 'lodash/isEmpty';
 
 
 const UserPostsContainer = (
@@ -13,22 +13,25 @@ const UserPostsContainer = (
     }
 ) => {
     const dispatch = useDispatch();
-
     useEffect(() => {
+        if (!isEmpty(posts)) {
+            return;
+        }
         dispatch(setPosts())
     }, [])
 
     const userPosts = useMemo(() => {
-        return posts && posts.data
-            ? posts.data
+        return posts
+            ? posts
             : null
     }, [posts])
 
 
     const user = useSelector(state => state.auth.user)
+
     const userAuth = useMemo(() => {
-        return user && user.data
-            ? user.data[0].id
+        return user && user[0]
+            ? user[0].id
             : null
     }, [user])
 
@@ -38,12 +41,11 @@ const UserPostsContainer = (
 };
 
 UserPostsContainer.propTypes = {
-    posts: PropTypes.object,
-    error: PropTypes.string,
+    data: PropTypes.array,
 };
 
 UserPostsContainer.defaultProps = {
-    posts: {},
+    data: [],
 };
 const mapStateToProps = ({posts: {posts, error}}) => ({
     posts, error

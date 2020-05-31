@@ -1,7 +1,7 @@
-import {SET_POSTS, SET_ERROR, REMOVE_ERROR, SET_POST, UPDATE_POST} from "./constants";
+import {SET_POSTS, SET_ERROR, REMOVE_ERROR, SET_POST, UPDATE_POST, DELETE_POST} from "./constants";
 
 const initialState = {
-    posts: {},
+    posts: [],
     error: null,
     post: {},
 }
@@ -20,11 +20,11 @@ export const PostReducer = (state = initialState, {type, payload}) => {
                 post: payload,
             }
         }
-        case UPDATE_POST: {
-            return state.posts.map(item => {
-                if (item.id === payload.data.id) return payload.data;
-                return item;
-            });
+        case DELETE_POST: {
+            return {
+                ...state,
+                posts: state.posts.filter(post => post.id !== payload)
+            }
         }
         case SET_ERROR: {
             return {
@@ -38,7 +38,7 @@ export const PostReducer = (state = initialState, {type, payload}) => {
             }
         }
         default:
-            return state
+            return state;
     }
 }
 

@@ -22,12 +22,12 @@ const EditProfileComponent = (
             return;
         }
 
-        userData.map(({email, name}) => (
-            <>
-                {setFieldValue('name', name, false)}
-                {setFieldValue('email', email, false)}
-            </>
-        ))
+        {
+            setFieldValue('name', userData.name, false)
+        }
+        {
+            setFieldValue('email', userData.email, false)
+        }
     }, [userData])
 
     return (
@@ -45,7 +45,7 @@ const EditProfileComponent = (
                         placeholder={formFields.name}
                         onChange={handleChange}
                         label={formFields.name}
-                        value={values.name}
+                        value={values.name || ''}
                         error={errors.name ? errors.name : null}
                         errorInput={errors.name && touched.name ? 'errorInput' : null}
                         errorLabel={errors.name && touched.name ? 'errorLabel' : null}
@@ -58,7 +58,7 @@ const EditProfileComponent = (
                         placeholder={formFields.email}
                         onChange={handleChange}
                         label={formFields.email}
-                        value={values.email}
+                        value={values.email || ''}
                         error={errors.email ? errors.email : null}
                         errorInput={errors.email && touched.email ? 'errorInput' : null}
                         errorLabel={errors.email && touched.email ? 'errorLabel' : null}
@@ -78,9 +78,11 @@ EditProfileComponent.propTypes = {
     errors: PropTypes.object,
     error: PropTypes.string,
     touched: PropTypes.object,
+    userData: PropTypes.object,
 };
 
 EditProfileComponent.defaultProps = {
+    userData: {},
     errors: {},
     error: '',
 };

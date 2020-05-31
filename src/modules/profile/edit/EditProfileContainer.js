@@ -16,12 +16,6 @@ const EditProfileContainer = (
     }
 ) => {
 
-    const dataInfo = useMemo(() => {
-        return user
-            ? user
-            : null
-    }, [user])
-
     const {handleChange, handleSubmit, errors, values, touched, setFieldValue} = useFormik({
         initialValues: {
             [formFields.name]: '',
@@ -46,7 +40,7 @@ const EditProfileContainer = (
             errors={errors}
             values={values}
             touched={touched}
-            userData={dataInfo}
+            userData={user}
             setFieldValue={setFieldValue}
         />
     )
@@ -54,12 +48,12 @@ const EditProfileContainer = (
 
 EditProfileContainer.propTypes = {
     updateProfile: PropTypes.func.isRequired,
-    user: PropTypes.array,
+    user: PropTypes.object,
     error: PropTypes.string,
 }
 
 EditProfileContainer.defaultProps = {
-    user: [],
+    user: {},
 }
 
 const mapDispatchToProps = dispatch => ({
