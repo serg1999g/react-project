@@ -1,1 +1,42 @@
 @import "src/styles/index";
+
+.tabs {
+  margin: spacing(5) 0;
+
+  .tab {
+    display: flex;
+    justify-content: center;
+    width: calc(100% / 3);
+    position: relative;
+    border: none;
+    background-color: transparent;
+    color: $tertiary-color;
+
+    &:after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 4px;
+      left: 0;
+      bottom: 0;
+      background-color: $dark-blue;
+    }
+
+    &.active {
+      position: relative;
+      background-color: transparent;
+      color: $primary-color;
+      font-weight: 600;
+
+      &:after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 4px;
+        left: 0;
+        bottom: 0;
+        background-color: $primary-color;
+      }
+    }
+  }
+}

@@ -25,38 +25,3 @@ const ShowPostContainer = (
 };
 
 export default ShowPostContainer;
-// TODO
-// ) => {
-//     const {id} = useParams();
-//     const dispatch = useDispatch()
-//
-//     const fetchApi = useCallback(async () => {
-//         await dispatch(setpost(id));
-//
-//     });
-//
-//     useEffect(() => {
-//         if (!isEmpty(post.data.id === id)) {
-//             return;
-//         }
-//         fetchApi();
-//     }, [])
-//
-//     return (
-//         <ShowPostComponent item={post.data}/>
-//     );
-// };
-//
-// ShowPostContainer.propTypes = {
-//     posts: PropTypes.object,
-//     error: PropTypes.string,
-// };
-//
-// ShowPostContainer.defaultProps = {
-//     post: {},
-// };
-// const mapStateToProps = ({posts: {post, error}}) => ({
-//     post, error
-// });
-//
-// export default connect(mapStateToProps)(ShowPostContainer);

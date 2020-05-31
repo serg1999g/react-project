@@ -1,9 +1,9 @@
-import {SET_POSTS, SET_ERROR, REMOVE_ERROR, SET_POST} from "./constants";
+import {SET_POSTS, SET_ERROR, REMOVE_ERROR, SET_POST, UPDATE_POST} from "./constants";
 
 const initialState = {
     posts: {},
     error: null,
-    post:{},
+    post: {},
 }
 
 export const PostReducer = (state = initialState, {type, payload}) => {
@@ -19,6 +19,12 @@ export const PostReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 post: payload,
             }
+        }
+        case UPDATE_POST: {
+            return state.posts.map(item => {
+                if (item.id === payload.data.id) return payload.data;
+                return item;
+            });
         }
         case SET_ERROR: {
             return {

@@ -1,4 +1,4 @@
-import {SET_ERROR, SET_POSTS, SET_POST} from "modules/post/store/constants";
+import {SET_ERROR, SET_POSTS, SET_POST, UPDATE_POST} from "modules/post/store/constants";
 import PostService from 'modules/post/PostService'
 
 export const setPosts = () => async dispatch => {
@@ -22,6 +22,22 @@ export const setPost = (id) => async dispatch => {
         dispatch({
             type: SET_POST,
             payload: response,
+        })
+    } catch (error) {
+        dispatch({
+            type: SET_ERROR,
+            payload: error.message,
+        })
+    }
+}
+
+export const updatePost = (id) => async dispatch => {
+    try {
+        const response = await PostService.updatePost(id)
+        console.log(response)
+        dispatch({
+            type: UPDATE_POST,
+            payload: response
         })
     } catch (error) {
         dispatch({

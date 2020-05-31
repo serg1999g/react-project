@@ -9,7 +9,7 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  padding: spacing(3) 0;
+  padding: spacing(2) 0;
   transition: 0.2s;
 
   &.small {
@@ -49,6 +49,7 @@
   color: $color-white;
   background-color: $tertiary-color;
   border: none;
+
   &:hover {
     background-color: $primary-color;
     transition: 0.2s;

@@ -22,10 +22,13 @@ const SignUpComponent = (
         <section>
             <div className="container">
                 <div className={classes.wrapperRegister}>
+                    <h2 className='text-center mb-4'>
+                        Sign up
+                    </h2>
                     <form onSubmit={handleSubmit}>
                         <Input
                             id={formFields.name}
-                            spacing='mb-5'
+                            spacing='mb-3'
                             name={formFields.name}
                             type={formFields.name}
                             placeholder={formFields.name}
@@ -38,7 +41,7 @@ const SignUpComponent = (
                         />
                         <Input
                             id={formFields.email}
-                            spacing='mb-5'
+                            spacing='mb-3'
                             name={formFields.email}
                             type={formFields.email}
                             placeholder={formFields.email}
@@ -52,7 +55,7 @@ const SignUpComponent = (
 
                         <PasswordInput
                             id={formFields.password}
-                            spacing='mb-5'
+                            spacing='mb-3'
                             name={formFields.password}
                             placeholder={formFields.password}
                             onChange={handleChange}
@@ -64,7 +67,7 @@ const SignUpComponent = (
                         />
                         <PasswordInput
                             id={formFields.passwordConfirm}
-                            spacing='mb-5'
+                            spacing='mb-3'
                             name={formFields.passwordConfirm}
                             placeholder='password Confirm'
                             onChange={handleChange}

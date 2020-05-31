@@ -22,10 +22,13 @@ const SignInComponent = (
         <section>
             <div className='container'>
                 <div className={classes.wrapperLogin}>
+                    <h2 className='text-center mb-4'>
+                        Sign in
+                    </h2>
                     <form onSubmit={handleSubmit}>
                         <Input
                             id={formFields.email}
-                            spacing='mb-5'
+                            spacing='mb-3'
                             name={formFields.email}
                             type={formFields.email}
                             placeholder={formFields.email}
@@ -39,7 +42,7 @@ const SignInComponent = (
 
                         <PasswordInput
                             id={formFields.password}
-                            spacing='mb-5'
+                            spacing='mb-3'
                             name={formFields.password}
                             placeholder={formFields.password}
                             onChange={handleChange}

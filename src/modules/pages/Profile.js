@@ -1,7 +1,6 @@
 import React, {} from 'react';
 import * as PropTypes from 'prop-types';
-import AuthProfileContainer from "../profile/AuthProfile/AuthProfileContainer";
-import EditProfileContainer from "../profile/edit/EditProfileContainer";
+import CustomTabs from "../../components/ui/Tabs";
 
 
 const ProfilePage = (
@@ -10,7 +9,9 @@ const ProfilePage = (
 
     return (
         <>
-        <EditProfileContainer/>
+        <div className="container">
+            <CustomTabs/>
+        </div>
         </>
     );
 };

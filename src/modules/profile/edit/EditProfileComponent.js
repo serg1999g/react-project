@@ -33,10 +33,13 @@ const EditProfileComponent = (
     return (
         <div className="container mt-4">
             <div className={classes.sectionUpdateProfile}>
+                <h2 className='text-center mb-4'>
+                    Update profile
+                </h2>
                 <form onSubmit={handleSubmit}>
                     <Input
                         id={formFields.name}
-                        spacing='mb-5'
+                        spacing='mb-3'
                         name={formFields.name}
                         type={formFields.name}
                         placeholder={formFields.name}
@@ -49,7 +52,7 @@ const EditProfileComponent = (
                     />
                     <Input
                         id={formFields.email}
-                        spacing='mb-5'
+                        spacing='mb-3'
                         name={formFields.email}
                         type={formFields.email}
                         placeholder={formFields.email}

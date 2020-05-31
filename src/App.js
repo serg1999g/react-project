@@ -15,7 +15,7 @@ import postsContainer from "./modules/post/posts/PostsContainer";
 import SignInContainer from "./modules/auth/signIn/signInContainer";
 import PostPage from "./modules/pages/PostPage";
 import AuthProfileContainer from "./modules/profile/AuthProfile/AuthProfileContainer";
-import ProfilePage from "./modules/pages/Profile";
+import EditPostContainer from "./modules/post/edit/EditPostContainer";
 
 function App() {
     const user = useSelector(state => state.auth.user);
@@ -38,8 +38,9 @@ function App() {
                 <PrivateRoute exact path="/" component={HomePage}/>
                 <PublicRoute exact path={routesByName.signIn} component={SignInContainer}/>
                 <PrivateRoute exact path={routesByName.posts} component={postsContainer}/>
-                <PrivateRoute exact path={routesByName.profile} component={ProfilePage}/>
+                <PrivateRoute exact path={routesByName.profile} component={AuthProfileContainer}/>
                 <PrivateRoute exact path="/posts/:id" component={PostPage}/>
+                <PrivateRoute exact path="/posts/:id/edit" component={EditPostContainer}/>
                 <PublicRoute exact path={routesByName.signUp} component={SignUpContainer}/>
                 <Route exact path="*" component={Page404}/>
             </Switch>

@@ -1,6 +1,10 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useState} from 'react';
 import * as PropTypes from 'prop-types';
-import UserProfile from "components/sections/Profile/User";
+import EditProfileContainer from "../edit/EditProfileContainer";
+import {Tabs, Tab} from 'react-bootstrap'
+import classes from 'components/ui/Tabs/Tabs.module.scss'
+import clsx from 'clsx';
+import UserPostsContainer from "../posts/UserPostsContainer";
 
 
 const AuthProfileComponent = (
@@ -13,21 +17,38 @@ const AuthProfileComponent = (
         if (!user) {
             return null;
         }
-        return user.map(({id, email, name, image}) => (
-            <UserProfile
-                key={id}
-                id={id}
-                email={email}
-                name={name}
-                image={image}
-
-            />
-        ))
     }, [user]);
+
+    const [key, setKey] = useState('userInfo');
 
     return (
         <div className='container'>
-            {renderUserInfo}
+            <Tabs
+                className={classes.tabs}
+                id="controlled-tab-example"
+                activeKey={key}
+                onSelect={(k) => setKey(k)}>
+                <Tab
+                    tabClassName={clsx(classes.tab,'d-flex', key === 'userInfo' ? classes.active : null)}
+                    eventKey="userInfo"
+                    title='User Info'>
+                    <EditProfileContainer user={user}/>
+                </Tab>
+                <Tab
+                    tabClassName={clsx(classes.tab, key === 'postsInfo' ? classes.active : null)}
+                    eventKey="postsInfo"
+                    title='Posts Info'>
+                    <UserPostsContainer/>
+                </Tab>
+                <Tab
+                    tabClassName={clsx(classes.tab, key === 'requirements' ? classes.active : null)}
+                    eventKey="requirements"
+                    title='RequirementsTab'>
+
+                </Tab>
+            </Tabs>
+
+
         </div>
     );
 };

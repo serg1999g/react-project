@@ -1,9 +1,15 @@
 @import "src/styles/index";
 
 .wrapperLogin {
-  padding: spacing(20) 0;
-  margin: 0 auto;
+  margin: spacing(20) auto;
   max-width: 600px;
+  padding: spacing(4);
+  background-color: $dark-blue;
+  border-radius: 10px;
+
+  .LoginForm {
+
+  }
 
   .messageError {
     padding-top: spacing(3);

@@ -10,7 +10,7 @@ const PostService = {
         return BaseAxiosInstance.get(`/api/mission/${id}/show`)
     },
 
-    editPost(id) {
+    updatePost(id) {
         return BaseAxiosInstance.put(`/api/mission/${id}/edit`)
     },
 }
