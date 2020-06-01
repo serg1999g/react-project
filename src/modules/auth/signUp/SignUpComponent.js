@@ -5,6 +5,7 @@ import Input from "components/ui/Inputs/Base";
 import {formFields} from "./constants";
 import PasswordInput from "components/ui/Inputs/Password";
 import Button from "components/ui/Button/base";
+import UploadImage from "../../../components/ui/UploadImage";
 
 
 const SignUpComponent = (
@@ -14,7 +15,8 @@ const SignUpComponent = (
         values,
         errors,
         touched,
-        error
+        error,
+        setFieldValue
     }
 ) => {
 
@@ -77,6 +79,7 @@ const SignUpComponent = (
                             errorInput={errors.password_confirmation && touched.password_confirmation ? 'errorInput' : null}
                             errorLabel={errors.password_confirmation && touched.password_confirmation ? 'errorLabel' : null}
                         />
+                        <UploadImage setFieldValue={setFieldValue}/>
 
                         <Button text='Sign Up'/>
                     </form>

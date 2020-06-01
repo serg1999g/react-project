@@ -14,12 +14,13 @@ const SignUpContainer = (
         error,
     }
 ) => {
-    const {handleChange, handleSubmit, errors, values, touched} = useFormik({
+    const {handleChange, handleSubmit, errors, values, touched, setFieldValue} = useFormik({
         initialValues: {
             [formFields.name]: '',
             [formFields.email]: '',
             [formFields.password]: '',
             [formFields.passwordConfirm]: '',
+            [formFields.image]: '',
         },
 
         validationSchema: Yup.object({
@@ -30,7 +31,14 @@ const SignUpContainer = (
         }),
 
         onSubmit(values) {
-            signUpAction(values)
+            const data = new FormData()
+            data.append('name', values.name)
+            data.append('email', values.email)
+            data.append('password', values.password)
+            data.append('password_confirmation', values.password_confirmation)
+            data.append('image', values.image)
+            console.log(data)
+            signUpAction(data)
         },
     });
 
@@ -42,6 +50,7 @@ const SignUpContainer = (
             errors={errors}
             values={values}
             touched={touched}
+            setFieldValue={setFieldValue}
         />
     )
 }
