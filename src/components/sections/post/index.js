@@ -51,7 +51,7 @@ const Post = (
                 <div>
 
                     <BaseLink title='Edit' path={editPost}/>
-                    <button key={id} onClick={handleClick}>Delete</button>
+                    <button className={classes.btnDelete} key={id} onClick={handleClick}>Delete</button>
                 </div>
                 : null
             }

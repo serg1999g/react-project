@@ -4,6 +4,7 @@ export const routesByName = {
   signUp: '/sign-up',
   posts:'/posts',
   profile:'/profile',
+  speciesWeProtect: '/species-we-protect',
   roteWithParams(param = ':param'){
     return `/prefix/${param}`
   },

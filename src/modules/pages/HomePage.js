@@ -1,4 +1,5 @@
 import React, {} from 'react';
+import PrimarySlider from "../../components/ui/Sliders/Primary";
 
 
 const HomePage = (
@@ -8,7 +9,8 @@ const HomePage = (
     return (
         <main className='my-5'>
             <div className="container">
-                home
+                <h1>Our Work</h1>
+                <PrimarySlider/>
             </div>
         </main>
     );

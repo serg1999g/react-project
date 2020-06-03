@@ -5,6 +5,7 @@ import {Tabs, Tab} from 'react-bootstrap'
 import classes from 'components/ui/Tabs/Tabs.module.scss'
 import clsx from 'clsx';
 import UserPostsContainer from "../posts/UserPostsContainer";
+import PasswordComponent from "../password/PasswordComponent";
 
 
 const AuthProfileComponent = (
@@ -27,7 +28,10 @@ const AuthProfileComponent = (
                     tabClassName={clsx(classes.tab, 'd-flex', key === 'userInfo' ? classes.active : null)}
                     eventKey="userInfo"
                     title='User Info'>
-                    <EditProfileContainer user={user}/>
+                    <div className='d-flex'>
+                        <EditProfileContainer user={user}/>
+                        <PasswordComponent/>
+                    </div>
                 </Tab>
                 <Tab
                     tabClassName={clsx(classes.tab, key === 'postsInfo' ? classes.active : null)}
