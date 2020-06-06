@@ -1,4 +1,4 @@
-import {SET_POSTS, SET_ERROR, REMOVE_ERROR, SET_POST, UPDATE_POST, DELETE_POST} from "./constants";
+import {SET_POSTS, SET_ERROR, REMOVE_ERROR, SET_POST, UPDATE_POST, DELETE_POST, EDIT_POST} from "./constants";
 
 const initialState = {
     posts: [],
@@ -25,6 +25,11 @@ export const PostReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 posts: state.posts.filter(post => post.id !== payload)
             }
+        }
+        case UPDATE_POST: {
+            const post = state.posts.filter(post => post.id !== payload[0].id);
+            return [...post, payload[0]]
+
         }
         case SET_ERROR: {
             return {

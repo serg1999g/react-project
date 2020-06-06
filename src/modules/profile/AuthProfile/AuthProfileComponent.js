@@ -1,11 +1,10 @@
-import React, {useMemo, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import * as PropTypes from 'prop-types';
 import EditProfileContainer from "../edit/EditProfileContainer";
 import {Tabs, Tab} from 'react-bootstrap'
 import classes from 'components/ui/Tabs/Tabs.module.scss'
 import clsx from 'clsx';
 import UserPostsContainer from "../posts/UserPostsContainer";
-import PasswordComponent from "../password/PasswordComponent";
 import PasswordContainer from "../password/PasswordContainer";
 
 

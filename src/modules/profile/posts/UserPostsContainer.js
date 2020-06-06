@@ -41,13 +41,13 @@ const UserPostsContainer = (
 };
 
 UserPostsContainer.propTypes = {
-    data: PropTypes.array,
+    posts: PropTypes.array,
 };
 
 UserPostsContainer.defaultProps = {
-    data: [],
+    posts: [],
 };
-const mapStateToProps = ({posts: {posts, error}}) => ({
+const mapStateToProps = ({posts: {posts,error}}) => ({
     posts, error
 });
 

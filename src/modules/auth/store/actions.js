@@ -25,6 +25,9 @@ export const signIn = (data) => async dispatch => {
 
 export const SignUp = (data) => async dispatch => {
     try {
+        dispatch({
+            type: REMOVE_ERROR
+        })
         const response = await AuthService.signUp(data);
         const token = response.data.access_token;
         localStorage.setItem('token', token);

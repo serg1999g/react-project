@@ -1,8 +1,6 @@
-import React, {useMemo} from 'react';
-import * as PropTypes from 'prop-types';
-import Slider from 'react-slick';
+import React, {} from 'react';
 import SpriteIcon from "components/icons/SpriteIcon";
-import BaseLink from "../../Link/Base";
+import BaseLink from "components/ui/Link/Base";
 import classes from './Primary.module.scss';
 import slide1 from 'assets/images/1.jpg';
 import slide2 from 'assets/images/2.jpg';
@@ -41,13 +39,6 @@ const PrimarySlider = (
         prevArrow: <PrevArrow/>,
         nextArrow: <NextArrow/>,
     };
-
-    // const renderSliderItems = useMemo(() => items.map(({...props}) => (
-    //     // <Mission
-    //     //     key={`simpleSlide-${props.id}`}
-    //     //     {...props}
-    //     // />
-    // )), [items]);
 
     return (
         <div className='d-flex flex-wrap justify-content-between'>

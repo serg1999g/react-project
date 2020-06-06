@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback} from 'react';
+import React, {useEffect, useCallback, useMemo} from 'react';
 import * as PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import {setPosts} from 'modules/post/store/actions';
@@ -24,8 +24,14 @@ const PostsContainer = (
         fetchApi();
     }, [])
 
+    const Posts = useMemo(() => {
+        return posts
+            ? posts
+            : null
+    }, [posts])
+
     return (
-        <PostsComponent items={posts}/>
+        <PostsComponent items={Posts}/>
     );
 };
 
@@ -37,8 +43,9 @@ PostsContainer.propTypes = {
 PostsContainer.defaultProps = {
     posts: [],
 };
-const mapStateToProps = ({posts: {posts, error}}) => ({
-    posts, error
-});
+const mapStateToProps = ({posts: {posts, error}}) =>
+    ({
+        posts, error
+    });
 
 export default connect(mapStateToProps)(PostsContainer);
