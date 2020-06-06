@@ -18,11 +18,10 @@ const AuthProfileContainer = (
     });
 
     const user = useMemo(() => {
-        return profile
-            ? profile[0]
+        return profile.data
+            ? profile.data
             : null
     }, [profile])
-
 
     useEffect(() => {
         fetchApi();
@@ -35,12 +34,12 @@ const AuthProfileContainer = (
 };
 
 AuthProfileContainer.propTypes = {
-    profile: PropTypes.array,
+    profile: PropTypes.object,
     error: PropTypes.string,
 };
 
 AuthProfileContainer.defaultProps = {
-    profile: [],
+    profile: {},
 };
 
 const mapStateToProps = ({profile: {profile, error}}) => ({

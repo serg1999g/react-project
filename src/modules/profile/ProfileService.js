@@ -12,6 +12,9 @@ const ProfileService = {
 
     updateProfile(formValues) {
         return BaseAxiosInstance.post('/api/user/update', formValues)
+    },
+    changePassword(formValues) {
+        return BaseAxiosInstance.post('/api/user/change', formValues)
     }
 }
 

@@ -6,6 +6,7 @@ import classes from 'components/ui/Tabs/Tabs.module.scss'
 import clsx from 'clsx';
 import UserPostsContainer from "../posts/UserPostsContainer";
 import PasswordComponent from "../password/PasswordComponent";
+import PasswordContainer from "../password/PasswordContainer";
 
 
 const AuthProfileComponent = (
@@ -30,7 +31,7 @@ const AuthProfileComponent = (
                     title='User Info'>
                     <div className='d-flex'>
                         <EditProfileContainer user={user}/>
-                        <PasswordComponent/>
+                        <PasswordContainer/>
                     </div>
                 </Tab>
                 <Tab

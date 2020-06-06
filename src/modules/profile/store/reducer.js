@@ -1,7 +1,7 @@
-import {SET_ERROR, REMOVE_ERROR, SET_AUTH_PROFILE, UPDATE_PROFILE} from './constants'
+import {SET_ERROR, REMOVE_ERROR, SET_AUTH_PROFILE, UPDATE_PROFILE, CHANGE_PASSWORD} from './constants'
 
 const initialState = {
-    profile: [],
+    profile: {},
     isAuthenticated: false,
     error: null,
 };
@@ -16,6 +16,13 @@ export const ProfileReducer = (state = initialState, {type, payload}) => {
             }
         }
         case UPDATE_PROFILE: {
+            return {
+                ...state,
+                isAuthenticated: true,
+                profile: payload
+            }
+        }
+        case CHANGE_PASSWORD: {
             return {
                 ...state,
                 isAuthenticated: true,
