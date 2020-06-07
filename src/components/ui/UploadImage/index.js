@@ -11,8 +11,7 @@ const UploadImage = (
 
     const handleChange = (event) => {
         const file = event.currentTarget.files[0]
-        setFieldValue("image", file)
-        console.log(image)
+        setFieldValue('image', file)
         const reader = new FileReader();
         reader.onloadend = () => {
             setImage(reader.result);

@@ -37,7 +37,6 @@ const SignUpContainer = (
             data.append('password', values.password)
             data.append('password_confirmation', values.password_confirmation)
             data.append('image', values.image)
-            console.log(data)
             signUpAction(data)
         },
     });
