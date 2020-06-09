@@ -27,9 +27,13 @@ export const PostReducer = (state = initialState, {type, payload}) => {
             }
         }
         case UPDATE_POST: {
-            const post = state.posts.filter(post => post.id !== payload[0].id);
-            return [...post, payload[0]]
-
+            const post = state.posts.filter(post => post.id !== payload.id);
+            return {
+                posts: [
+                    ...post,
+                    payload,
+                ]
+            }
         }
         case SET_ERROR: {
             return {

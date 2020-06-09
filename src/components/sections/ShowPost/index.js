@@ -10,9 +10,14 @@ const ShowPost = (
         name,
         description,
         content,
+        language,
+        location,
+        duration,
+        start,
         images,
     }
 ) => {
+
     const renderImage = useMemo(() => images.map(({image, id}) => (
         <Image
             key={id}
@@ -33,24 +38,36 @@ const ShowPost = (
                 <p className={classes.content}>
                     {content}
                 </p>
+                <p className={classes.description}>
+                    {language}
+                </p>
+                <p className={classes.description}>
+                    {location}
+                </p>
+                <p className={classes.description}>
+                    {duration}
+                </p>
+                <p className={classes.description}>
+                    {start}
+                </p>
             </div>
         </div>
     );
 };
 
 ShowPost.propTypes = {
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.array,
-    description: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
+    id: PropTypes.number,
+    name: PropTypes.string,
+    images: PropTypes.array,
+    description: PropTypes.string,
+    content: PropTypes.string,
     path: PropTypes.string,
     spacing: PropTypes.string,
 };
 
 ShowPost.defaultProps = {
     path: '/',
-    image: [],
+    images: [],
 };
 
 export default ShowPost;

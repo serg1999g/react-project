@@ -11,7 +11,6 @@ import PasswordContainer from "../password/PasswordContainer";
 const AuthProfileComponent = (
     {
         user,
-        posts,
     }
 ) => {
 
@@ -54,12 +53,10 @@ const AuthProfileComponent = (
 
 AuthProfileComponent.propTypes = {
     user: PropTypes.object,
-    posts: PropTypes.object,
 };
 
 AuthProfileComponent.defaultProps = {
     user: {},
-    posts: {},
 };
 
 export default AuthProfileComponent;

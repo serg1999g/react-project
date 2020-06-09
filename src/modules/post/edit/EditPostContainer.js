@@ -1,9 +1,10 @@
 import React, {useEffect, useCallback, useState} from 'react';
 import {useParams} from "react-router-dom";
+import {useDispatch} from 'react-redux';
 import EditPostComponent from "./EditPostComponent";
 import {formFields} from "./constants";
 import {useFormik} from 'formik';
-import {updatePost as updatePostAction} from "../store/actions";
+import {setPosts, updatePost as updatePostAction} from "../store/actions";
 import {connect} from 'react-redux';
 import * as Yup from 'yup';
 import PostService from "../PostService";
@@ -15,10 +16,12 @@ const EditPostContainer = (
     }
 ) => {
     const {id} = useParams();
+    const dispatch = useDispatch();
 
     const [post, setPost] = useState([])
     const fetchApi = useCallback(async () => {
         const response = await PostService.editPost(id);
+        await dispatch(setPosts())
         setPost(response.data);
     })
 
@@ -33,6 +36,10 @@ const EditPostContainer = (
             [formFields.name]: '',
             [formFields.description]: '',
             [formFields.content]: '',
+            [formFields.language]: '',
+            [formFields.location]: '',
+            [formFields.duration]: '',
+            [formFields.start]: '',
         },
 
         validationSchema: Yup.object({

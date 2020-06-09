@@ -8,28 +8,37 @@ const ShowPostComponent = (
         item
     }
 ) => {
-    const renderPost = useMemo(() => item.map(({...props}) => (
-        <ShowPost
-            key={props.id}
-            {...props}
-        />
-    )), [item]);
+    const post = useMemo(() => {
+        return item.data
+            ? item.data
+            : {}
+    }, [item])
 
     return (
         <section>
             <div className="container">
-                {renderPost}
+                <ShowPost
+                    id={post.id}
+                    name={post.name}
+                    content={post.content}
+                    description={post.description}
+                    images={post.images}
+                    language={post.language}
+                    location={post.location}
+                    duration={post.duration}
+                    start={post.start}
+                />
             </div>
         </section>
     );
 };
 
 ShowPostComponent.propTypes = {
-    item: PropTypes.array,
+    item: PropTypes.object,
 };
 
 ShowPostComponent.defaultProps = {
-    item: []
+    item: {}
 };
 
 export default ShowPostComponent;

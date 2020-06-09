@@ -8,7 +8,7 @@ const ShowPostContainer = (
     {}
 ) => {
     const {id} = useParams();
-    const [post, setPost] = useState([]);
+    const [post, setPost] = useState({});
 
     const fetchApi = useCallback(async () => {
         const response = await PostService.getPost(id);

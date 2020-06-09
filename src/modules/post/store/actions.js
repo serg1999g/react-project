@@ -7,7 +7,7 @@ export const setPosts = () => async dispatch => {
         const response = await PostService.allPost()
         dispatch({
             type: SET_POSTS,
-            payload: response,
+            payload: response.data,
         })
     } catch (error) {
         dispatch({
@@ -52,7 +52,7 @@ export const updatePost = (data, id) => async dispatch => {
         const response = await PostService.updatePost(data, id)
         dispatch({
             type: UPDATE_POST,
-            payload: response
+            payload: response.data
         })
     } catch (error) {
         dispatch({

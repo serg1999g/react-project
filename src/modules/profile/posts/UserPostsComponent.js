@@ -9,6 +9,7 @@ const UserPostsComponent = (
         user
     }
 ) => {
+    console.log(posts)
     const renderUserInfo = useMemo(() => {
         if (!posts) {
             return;
@@ -23,7 +24,7 @@ const UserPostsComponent = (
                         description={post.description}
                         name={post.name}
                         path={`/posts/${post.id}`}
-                        image={post.image}
+                        image={post.images}
                         editPost={`/posts/${post.id}/edit`}
                     />
                 )

@@ -25,13 +25,25 @@ const EditPostComponent = (
             setFieldValue('id', post.id, false)
         }
         {
-            setFieldValue('name', post.name, false)
+            setFieldValue('name', post.name, false);
         }
         {
             setFieldValue('description', post.description, false)
         }
         {
             setFieldValue('content', post.content, false)
+        }
+        {
+            setFieldValue('location', post.location, false)
+        }
+        {
+            setFieldValue('language', post.language, false)
+        }
+        {
+            setFieldValue('duration', post.duration, false)
+        }
+        {
+            setFieldValue('start', post.start, false)
         }
     }, [post])
 
@@ -76,6 +88,58 @@ const EditPostComponent = (
                     error={errors.content ? errors.content : null}
                     errorInput={errors.content && touched.content ? 'errorInput' : null}
                     errorLabel={errors.content && touched.content ? 'errorLabel' : null}
+                />
+                <Input
+                    id={formFields.id}
+                    spacing='mb-3'
+                    name={formFields.location}
+                    type={formFields.location}
+                    placeholder={formFields.location}
+                    onChange={handleChange}
+                    label={formFields.location}
+                    value={values.location || ''}
+                    error={errors.location ? errors.location : null}
+                    errorInput={errors.location && touched.location ? 'errorInput' : null}
+                    errorLabel={errors.location && touched.location ? 'errorLabel' : null}
+                />
+                <Input
+                    id={formFields.id}
+                    spacing='mb-3'
+                    name={formFields.language}
+                    type={formFields.language}
+                    placeholder={formFields.language}
+                    onChange={handleChange}
+                    label={formFields.language}
+                    value={values.language || ''}
+                    error={errors.language ? errors.language : null}
+                    errorInput={errors.language && touched.language ? 'errorInput' : null}
+                    errorLabel={errors.language && touched.language ? 'errorLabel' : null}
+                />
+                <Input
+                    id={formFields.id}
+                    spacing='mb-3'
+                    name={formFields.duration}
+                    type={formFields.duration}
+                    placeholder={formFields.duration}
+                    onChange={handleChange}
+                    label={formFields.duration}
+                    value={values.duration || ''}
+                    error={errors.duration ? errors.duration : null}
+                    errorInput={errors.duration && touched.duration ? 'errorInput' : null}
+                    errorLabel={errors.duration && touched.duration ? 'errorLabel' : null}
+                />
+                <Input
+                    id={formFields.id}
+                    spacing='mb-3'
+                    name={formFields.start}
+                    type={formFields.start}
+                    placeholder={formFields.start}
+                    onChange={handleChange}
+                    label={formFields.start}
+                    value={values.start || ''}
+                    error={errors.start ? errors.start : null}
+                    errorInput={errors.start && touched.start ? 'errorInput' : null}
+                    errorLabel={errors.start && touched.start ? 'errorLabel' : null}
                 />
 
                 <Button text='Submit'/>
