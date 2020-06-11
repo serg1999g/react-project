@@ -48,7 +48,7 @@ const Post = (
 
             {editPost
                 ?
-                <div>
+                <div className={classes.wrapperBtn}>
 
                     <BaseLink title='Edit' path={editPost}/>
                     <button className={classes.btnDelete} key={id} onClick={handleClick}>Delete</button>

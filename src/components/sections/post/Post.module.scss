@@ -20,10 +20,15 @@
 
   .blockWithDescription {
     margin-left: spacing(3);
+    max-width: 800px;
 
     .description {
       margin-top: spacing(2);
     }
+  }
+
+  .wrapperBtn {
+    width: 100px;
   }
 
   .btnDelete {
