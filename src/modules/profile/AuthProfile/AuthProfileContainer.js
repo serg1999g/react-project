@@ -23,12 +23,18 @@ const AuthProfileContainer = (
             : null
     }, [profile])
 
+    const image = useMemo(() => {
+        return profile.data
+            ? profile.data.images
+            : null
+    },[profile])
+
     useEffect(() => {
         fetchApi();
     }, [])
     return (
         <div>
-            <AuthProfileComponent user={user}/>
+            <AuthProfileComponent user={user} image={image}/>
         </div>
     );
 };

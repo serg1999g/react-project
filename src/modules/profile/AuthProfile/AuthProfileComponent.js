@@ -6,11 +6,13 @@ import classes from 'components/ui/Tabs/Tabs.module.scss'
 import clsx from 'clsx';
 import UserPostsContainer from "../posts/UserPostsContainer";
 import PasswordContainer from "../password/PasswordContainer";
+import EditAvatarContainer from "../editAvatar/EditAvatarContainer";
 
 
 const AuthProfileComponent = (
     {
         user,
+        image,
     }
 ) => {
 
@@ -30,6 +32,7 @@ const AuthProfileComponent = (
                     <div className='d-flex'>
                         <EditProfileContainer user={user}/>
                         <PasswordContainer/>
+                        <EditAvatarContainer image={image}/>
                     </div>
                 </Tab>
                 <Tab
@@ -53,10 +56,12 @@ const AuthProfileComponent = (
 
 AuthProfileComponent.propTypes = {
     user: PropTypes.object,
+    image: PropTypes.object,
 };
 
 AuthProfileComponent.defaultProps = {
     user: {},
+    image: {},
 };
 
 export default AuthProfileComponent;
