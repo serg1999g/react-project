@@ -1,4 +1,12 @@
-import {SET_ERROR, REMOVE_ERROR, SET_AUTH_PROFILE, UPDATE_PROFILE, CHANGE_PASSWORD} from './constants'
+import {
+    SET_ERROR,
+    REMOVE_ERROR,
+    SET_AUTH_PROFILE,
+    UPDATE_PROFILE,
+    CHANGE_PASSWORD,
+    DELETE_AVATAR,
+    CREATE_AVATAR
+} from './constants'
 
 const initialState = {
     profile: {},
@@ -27,6 +35,31 @@ export const ProfileReducer = (state = initialState, {type, payload}) => {
                 ...state,
                 isAuthenticated: true,
                 profile: payload
+            }
+        }
+        case DELETE_AVATAR: {
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    data: {
+                        ...state.profile.data,
+                        images: payload,
+                    }
+                }
+            }
+        }
+        case CREATE_AVATAR: {
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    data: {
+                        ...state.profile.data,
+                        images: payload,
+                    }
+                }
+
             }
         }
         case SET_ERROR: {

@@ -6,11 +6,10 @@ import SpriteIcon from "components/icons/SpriteIcon";
 
 const UploadImage = (
     {
-        setFieldValue
+        setFieldValue,
     }
 ) => {
     const [image, setImage] = useState('')
-
 
     const handleChange = (event) => {
         const file = event.currentTarget.files[0]

@@ -15,6 +15,13 @@ const ProfileService = {
     },
     changePassword(formValues) {
         return BaseAxiosInstance.post('/api/user/change', formValues)
+    },
+
+    deleteAvatar(id) {
+        return BaseAxiosInstance.delete(`/api/image/${id}/delete`)
+    },
+    createAvatar(formValues) {
+        return BaseAxiosInstance.post('/api/image/create', formValues)
     }
 }
 

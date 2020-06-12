@@ -32,7 +32,7 @@ const AuthProfileComponent = (
                     <div className='d-flex'>
                         <EditProfileContainer user={user}/>
                         <PasswordContainer/>
-                        <EditAvatarContainer image={image}/>
+
                     </div>
                 </Tab>
                 <Tab
@@ -44,8 +44,8 @@ const AuthProfileComponent = (
                 <Tab
                     tabClassName={clsx(classes.tab, key === 'requirements' ? classes.active : null)}
                     eventKey="requirements"
-                    title='RequirementsTab'>
-
+                    title='Avatar'>
+                    <EditAvatarContainer image={image}/>
                 </Tab>
             </Tabs>
 
