@@ -46,7 +46,11 @@ export const PostReducer = (state = initialState, {type, payload}) => {
         }
         case CREATE_POST: {
             return {
-
+                ...state,
+                posts: [
+                    ...state.posts,
+                    payload
+                ]
             }
         }
         case SET_ERROR: {

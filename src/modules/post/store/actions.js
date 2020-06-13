@@ -87,13 +87,10 @@ export const deletePost = (id) => async dispatch => {
 
 export const createPost = (data) => async dispatch => {
     try {
-        dispatch({
-            type:REMOVE_ERROR,
-        })
         const response = await PostService.createPost(data)
         dispatch({
             type: CREATE_POST,
-            payload: response
+            payload: response.data
         })
     } catch (error) {
         dispatch({
