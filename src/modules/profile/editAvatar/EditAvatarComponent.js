@@ -3,6 +3,8 @@ import * as PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import {deleteAvatar} from "../store/actions";
 import UploadImage from "components/ui/UploadImage";
+import classes from './EditAvatar.module.scss';
+import SpriteIcon from "components/icons/SpriteIcon";
 
 
 const EditAvatarComponent = (
@@ -13,7 +15,7 @@ const EditAvatarComponent = (
     }
 ) => {
     const dispatch = useDispatch();
-    console.log(image)
+
     const url = useMemo(() => {
         return image
             ? image.image
@@ -30,15 +32,14 @@ const EditAvatarComponent = (
     })
 
     return (
-
         <div>
             {image
                 ?
-                <div>
-                    <button onClick={handleClick}>
-                        delete
+                <div className={classes.wrapperImage}>
+                    <button onClick={handleClick} className={classes.btn}>
+                        <SpriteIcon name='remove-icon'/>
                     </button>
-                    <img src={url} alt="avatar"/>
+                    <img src={url} alt="avatar" className={classes.image}/>
                 </div>
                 :
                 <div>
@@ -48,21 +49,13 @@ const EditAvatarComponent = (
                             update
                         </button>
                     </form>
-
                 </div>
             }
         </div>
-        // <UploadImage setFieldValue='' UserImage={image}/>
     );
 };
 
-EditAvatarComponent.propTypes = {
-    image: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        imageable_id: PropTypes.number.isRequired,
-        image: PropTypes.string.isRequired,
-    })
-};
+EditAvatarComponent.propTypes = {};
 
 EditAvatarComponent.defaultProps = {};
 

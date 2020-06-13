@@ -12,10 +12,8 @@ const EditAvatarContainer = (
     {
         image,
         createAvatarAction,
-        profile
     }
 ) => {
-
 
     const {handleSubmit, values, setFieldValue} = useFormik({
         initialValues: {},

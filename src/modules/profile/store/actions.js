@@ -1,5 +1,6 @@
 import {SET_ERROR, SET_AUTH_PROFILE, UPDATE_PROFILE, CHANGE_PASSWORD, DELETE_AVATAR, CREATE_AVATAR} from "./constants";
 import ProfileService from "../ProfileService";
+import {REMOVE_ERROR} from "../../auth/store/constants";
 
 export const setAuthProfile = () => async dispatch => {
     try {
@@ -18,6 +19,9 @@ export const setAuthProfile = () => async dispatch => {
 
 export const updateProfile = (data) => async dispatch => {
     try {
+        dispatch({
+            type: REMOVE_ERROR
+        })
         const response = await ProfileService.updateProfile(data)
         dispatch({
             type: UPDATE_PROFILE,
@@ -63,6 +67,9 @@ export const deleteAvatar = (id) => async dispatch => {
 
 export const createAvatar = (data) => async dispatch => {
     try {
+        dispatch({
+            type: REMOVE_ERROR
+        })
         const response = await ProfileService.createAvatar(data)
         dispatch({
             type: CREATE_AVATAR,

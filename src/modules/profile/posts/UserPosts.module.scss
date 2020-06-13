@@ -1,0 +1,10 @@
+@import "src/styles/index";
+
+.sectionPosts {
+  .link {
+    padding: spacing(2);
+    background-color: $dark-blue;
+    cursor: pointer;
+    display: flex;
+  }
+}
