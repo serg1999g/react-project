@@ -1,4 +1,13 @@
-import {SET_POSTS, SET_ERROR, REMOVE_ERROR, SET_POST, UPDATE_POST, DELETE_POST, EDIT_POST} from "./constants";
+import {
+    SET_POSTS,
+    SET_ERROR,
+    REMOVE_ERROR,
+    SET_POST,
+    UPDATE_POST,
+    DELETE_POST,
+    EDIT_POST,
+    CREATE_POST
+} from "./constants";
 
 const initialState = {
     posts: [],
@@ -33,6 +42,11 @@ export const PostReducer = (state = initialState, {type, payload}) => {
                     ...post,
                     payload,
                 ]
+            }
+        }
+        case CREATE_POST: {
+            return {
+
             }
         }
         case SET_ERROR: {

@@ -3,6 +3,7 @@ import * as PropTypes from 'prop-types';
 import classes from './UserPosts.module.scss';
 import Post from "components/sections/post";
 import BaseLink from "components/ui/Link/Base";
+import {routesByName} from "../../../constants/routes";
 
 const UserPostsComponent = (
     {
@@ -34,8 +35,8 @@ const UserPostsComponent = (
 
     return (
         <section className={classes.sectionPosts}>
-            <div className={classes.link}><BaseLink path='' title='Create post'/></div>
             <div className="container">
+                <div className={classes.link}><BaseLink path={routesByName.createPost} title='Create post'/></div>
                 {renderUserInfo}
             </div>
         </section>

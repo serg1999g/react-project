@@ -1,6 +1,14 @@
-import {SET_ERROR, SET_POSTS, SET_POST, UPDATE_POST, DELETE_POST, EDIT_POST} from "modules/post/store/constants";
+import {
+    SET_ERROR,
+    SET_POSTS,
+    SET_POST,
+    UPDATE_POST,
+    DELETE_POST,
+    EDIT_POST,
+    CREATE_POST,
+    REMOVE_ERROR
+} from "modules/post/store/constants";
 import PostService from 'modules/post/PostService'
-import {REMOVE_ERROR} from "../../auth/store/constants";
 
 export const setPosts = () => async dispatch => {
     try {
@@ -68,6 +76,24 @@ export const deletePost = (id) => async dispatch => {
         dispatch({
             type: DELETE_POST,
             payload: id
+        })
+    } catch (error) {
+        dispatch({
+            type: SET_ERROR,
+            payload: error.message
+        })
+    }
+}
+
+export const createPost = (data) => async dispatch => {
+    try {
+        dispatch({
+            type:REMOVE_ERROR,
+        })
+        const response = await PostService.createPost(data)
+        dispatch({
+            type: CREATE_POST,
+            payload: response
         })
     } catch (error) {
         dispatch({

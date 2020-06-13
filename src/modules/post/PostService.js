@@ -13,12 +13,17 @@ const PostService = {
     updatePost(formData, id) {
         return BaseAxiosInstance.put(`/api/mission/${id}/update`, formData)
     },
+
     editPost(id) {
         return BaseAxiosInstance.get(`/api/mission/${id}/edit`)
     },
 
     deletePost(id) {
         return BaseAxiosInstance.delete(`/api/mission/${id}/destroy`)
+    },
+
+    createPost(formData) {
+        return BaseAxiosInstance.post(`/api/mission/create`, formData)
     },
 }
 
