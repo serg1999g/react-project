@@ -3,6 +3,7 @@ import * as PropTypes from 'prop-types';
 import Input from "components/ui/Inputs/Base";
 import {formFields} from "./constants";
 import Button from "components/ui/Button/base";
+import {useDropzone} from 'react-dropzone';
 
 
 const EditPostComponent = (
@@ -25,7 +26,7 @@ const EditPostComponent = (
             setFieldValue('id', post.id, false)
         }
         {
-            setFieldValue('name', post.name, false);
+            setFieldValue('name', post.name, false)
         }
         {
             setFieldValue('description', post.description, false)
@@ -46,6 +47,14 @@ const EditPostComponent = (
             setFieldValue('start', post.start, false)
         }
     }, [post])
+
+    const {getRootProps, getInputProps, isDragActive} = useDropzone({
+        accept: "image/*",
+        multiple: true,
+        onDrop: acceptedFiles => {
+            setFieldValue("image", acceptedFiles);
+        }
+    });
 
     return (
         <div className='container'>
@@ -141,14 +150,25 @@ const EditPostComponent = (
                     errorInput={errors.start && touched.start ? 'errorInput' : null}
                     errorLabel={errors.start && touched.start ? 'errorLabel' : null}
                 />
-
+                {}
+                <div {...getRootProps({className: "dropzone"})}>
+                    <input {...getInputProps()} />
+                    {isDragActive ? (
+                        <p>Drop the files here ...</p>
+                    ) : (
+                        <p>Drag 'n' drop some files here, or click to select files</p>
+                    )}
+                </div>
                 <Button text='Submit'/>
             </form>
         </div>
     );
 };
 
-EditPostComponent.propTypes = {};
+EditPostComponent.propTypes = {
+    handleChange:PropTypes.func,
+    handleSubmit:PropTypes.func,
+};
 
 EditPostComponent.defaultProps = {};
 

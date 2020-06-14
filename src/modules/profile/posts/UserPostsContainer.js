@@ -18,14 +18,7 @@ const UserPostsContainer = (
             return;
         }
         dispatch(setPosts())
-    }, [])
-
-    const userPosts = useMemo(() => {
-        return posts
-            ? posts
-            : null
-    }, [posts])
-
+    }, [posts, dispatch])
 
     const user = useSelector(state => state.auth.user)
 
@@ -36,7 +29,7 @@ const UserPostsContainer = (
     }, [user])
 
     return (
-        <UserPostsComponent posts={userPosts} user={userAuth}/>
+        <UserPostsComponent posts={posts} user={userAuth}/>
     );
 };
 

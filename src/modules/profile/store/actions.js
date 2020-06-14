@@ -19,9 +19,6 @@ export const setAuthProfile = () => async dispatch => {
 
 export const updateProfile = (data) => async dispatch => {
     try {
-        dispatch({
-            type: REMOVE_ERROR
-        })
         const response = await ProfileService.updateProfile(data)
         dispatch({
             type: UPDATE_PROFILE,

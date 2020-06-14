@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import classes from './UserPosts.module.scss';
 import Post from "components/sections/post";
 import BaseLink from "components/ui/Link/Base";
-import {routesByName} from "../../../constants/routes";
+import {routesByName} from "constants/routes";
 
 const UserPostsComponent = (
     {

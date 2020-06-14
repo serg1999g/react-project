@@ -15,7 +15,7 @@ const PostsContainer = (
 
     const fetchApi = useCallback(async () => {
         await dispatch(setPosts());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (!isEmpty(posts)) {

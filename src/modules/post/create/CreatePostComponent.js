@@ -1,12 +1,10 @@
-import React, {useState, useMemo} from 'react';
+import React, {} from 'react';
 import * as PropTypes from 'prop-types';
 import Input from "components/ui/Inputs/Base";
 import {formFields} from "./constants";
 import Button from "components/ui/Button/base";
-import UploadImage from "components/ui/UploadImage";
 import {useDropzone} from 'react-dropzone'
-import classes from "components/ui/UploadImage/UploadImage.module.scss";
-import Post from "../../../components/sections/post";
+
 
 
 const CreatePostComponent = (
@@ -19,17 +17,13 @@ const CreatePostComponent = (
         setFieldValue
     }
 ) => {
-    const [images, setImages] = useState([])
-
     const {getRootProps, getInputProps, isDragActive} = useDropzone({
         accept: "image/*",
         multiple: true,
         onDrop: acceptedFiles => {
             setFieldValue("image", acceptedFiles);
-            setImages(acceptedFiles)
         }
     });
-
 
     return (
         <div className='container'>
@@ -141,7 +135,11 @@ const CreatePostComponent = (
     );
 };
 
-CreatePostComponent.propTypes = {};
+CreatePostComponent.propTypes = {
+    handleSubmit:PropTypes.func,
+    handleChange:PropTypes.func,
+
+};
 
 CreatePostComponent.defaultProps = {};
 

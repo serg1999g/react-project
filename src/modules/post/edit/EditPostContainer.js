@@ -8,6 +8,7 @@ import {setPosts, updatePost as updatePostAction} from "../store/actions";
 import {connect} from 'react-redux';
 import * as Yup from 'yup';
 import PostService from "../PostService";
+import isEmpty from 'lodash/isEmpty';
 
 
 const EditPostContainer = (
@@ -23,7 +24,7 @@ const EditPostContainer = (
         const response = await PostService.editPost(id);
         await dispatch(setPosts())
         setPost(response.data);
-    })
+    },[dispatch])
 
     useEffect(() => {
         fetchApi()
@@ -32,7 +33,6 @@ const EditPostContainer = (
 
     const {handleChange, handleSubmit, errors, values, touched, setFieldValue} = useFormik({
         initialValues: {
-            [formFields.id]: '',
             [formFields.name]: '',
             [formFields.description]: '',
             [formFields.content]: '',
@@ -48,7 +48,21 @@ const EditPostContainer = (
             content: Yup.string().required('Content is required'),
         }),
         onSubmit(values) {
-            updatePost(values)
+            const data = new FormData()
+            data.append('id', values.id)
+            data.append('name', values.name)
+            data.append('description', values.description)
+            data.append('content', values.content)
+            data.append('language', values.language)
+            data.append('location', values.location)
+            data.append('duration', values.duration)
+            data.append('start', values.start)
+            if (!isEmpty(values.image)) {
+                values.image.map((index, i) => {
+                    data.append(`image-${i}`, index)
+                })
+            }
+            updatePost(data)
         },
     });
 
@@ -68,7 +82,7 @@ const EditPostContainer = (
 
 const mapDispatchToProps = dispatch => ({
     updatePost: (values) => {
-        dispatch(updatePostAction(values, values.id));
+        dispatch(updatePostAction(values));
     }
 });
 

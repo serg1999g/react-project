@@ -18,11 +18,11 @@ const CreatePostContainer = (
 
     const fetchApi = useCallback(async () => {
         await dispatch(setPosts())
-    })
+    },[dispatch])
 
     useEffect(() => {
         fetchApi()
-    }, [])
+    }, [fetchApi])
 
     const {handleChange, handleSubmit, errors, values, touched, setFieldValue} = useFormik({
         initialValues: {

@@ -15,7 +15,7 @@ const AuthProfileContainer = (
 
     const fetchApi = useCallback(async () => {
         await dispatch(setAuthProfile());
-    });
+    },[dispatch]);
 
     const user = useMemo(() => {
         return profile.data
@@ -32,6 +32,7 @@ const AuthProfileContainer = (
     useEffect(() => {
         fetchApi();
     }, [])
+
     return (
         <div>
             <AuthProfileComponent user={user} image={image}/>

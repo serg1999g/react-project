@@ -6,9 +6,12 @@ import {
     DELETE_POST,
     EDIT_POST,
     CREATE_POST,
-    REMOVE_ERROR
+    REMOVE_ERROR,
+    DELETE_IMAGE,
+    CREATE_IMAGE
 } from "modules/post/store/constants";
 import PostService from 'modules/post/PostService'
+import ProfileService from "../../profile/ProfileService";
 
 export const setPosts = () => async dispatch => {
     try {
@@ -55,9 +58,10 @@ export const editPost = (id) => async dispatch => {
     }
 }
 
-export const updatePost = (data, id) => async dispatch => {
+export const updatePost = (data) => async dispatch => {
     try {
-        const response = await PostService.updatePost(data, id)
+        const response = await PostService.updatePost(data, data.get('id'))
+
         dispatch({
             type: UPDATE_POST,
             payload: response.data
@@ -96,6 +100,36 @@ export const createPost = (data) => async dispatch => {
         dispatch({
             type: SET_ERROR,
             payload: error.message
+        })
+    }
+}
+
+export const deleteImage = (id) => async dispatch => {
+    try {
+        const response = await PostService.deleteImage(id)
+        dispatch({
+            type: DELETE_IMAGE,
+            payload: id,
+        })
+    } catch (error) {
+        dispatch({
+            type: SET_ERROR,
+            payload: error.message,
+        })
+    }
+}
+
+export const createImage = (data) => async dispatch => {
+    try {
+        const response = await PostService.createImage(data)
+        dispatch({
+            type: CREATE_IMAGE,
+            payload: response.data,
+        })
+    } catch (error) {
+        dispatch({
+            type: SET_ERROR,
+            payload: error.message,
         })
     }
 }
