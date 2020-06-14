@@ -1,8 +1,12 @@
-import React, {} from 'react';
+import React, {useState, useMemo} from 'react';
 import * as PropTypes from 'prop-types';
 import Input from "components/ui/Inputs/Base";
 import {formFields} from "./constants";
 import Button from "components/ui/Button/base";
+import UploadImage from "components/ui/UploadImage";
+import {useDropzone} from 'react-dropzone'
+import classes from "components/ui/UploadImage/UploadImage.module.scss";
+import Post from "../../../components/sections/post";
 
 
 const CreatePostComponent = (
@@ -12,8 +16,20 @@ const CreatePostComponent = (
         values,
         errors,
         touched,
+        setFieldValue
     }
 ) => {
+    const [images, setImages] = useState([])
+
+    const {getRootProps, getInputProps, isDragActive} = useDropzone({
+        accept: "image/*",
+        multiple: true,
+        onDrop: acceptedFiles => {
+            setFieldValue("image", acceptedFiles);
+            setImages(acceptedFiles)
+        }
+    });
+
 
     return (
         <div className='container'>
@@ -109,6 +125,15 @@ const CreatePostComponent = (
                     errorInput={errors.start && touched.start ? 'errorInput' : null}
                     errorLabel={errors.start && touched.start ? 'errorLabel' : null}
                 />
+                {}
+                <div {...getRootProps({className: "dropzone"})}>
+                    <input {...getInputProps()} />
+                    {isDragActive ? (
+                        <p>Drop the files here ...</p>
+                    ) : (
+                        <p>Drag 'n' drop some files here, or click to select files</p>
+                    )}
+                </div>
 
                 <Button text='Submit'/>
             </form>

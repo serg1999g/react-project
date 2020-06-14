@@ -67,9 +67,6 @@ export const deleteAvatar = (id) => async dispatch => {
 
 export const createAvatar = (data) => async dispatch => {
     try {
-        dispatch({
-            type: REMOVE_ERROR
-        })
         const response = await ProfileService.createAvatar(data)
         dispatch({
             type: CREATE_AVATAR,

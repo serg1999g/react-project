@@ -24,9 +24,8 @@ const CreatePostContainer = (
         fetchApi()
     }, [])
 
-    const {handleChange, handleSubmit, errors, values, touched} = useFormik({
+    const {handleChange, handleSubmit, errors, values, touched, setFieldValue} = useFormik({
         initialValues: {
-            [formFields.id]: '',
             [formFields.name]: '',
             [formFields.description]: '',
             [formFields.content]: '',
@@ -42,7 +41,18 @@ const CreatePostContainer = (
             content: Yup.string().required('Content is required'),
         }),
         onSubmit(values) {
-            createPost(values)
+            const data = new FormData()
+            data.append('name', values.name)
+            data.append('description', values.description)
+            data.append('content', values.content)
+            data.append('language', values.language)
+            data.append('location', values.location)
+            data.append('duration', values.duration)
+            data.append('start', values.start)
+            values.image.map((index, i) => {
+                data.append(`image-${i}`, index)
+            });
+            createPost(data)
         },
     });
 
@@ -53,6 +63,7 @@ const CreatePostContainer = (
             values={values}
             touched={touched}
             errors={errors}
+            setFieldValue={setFieldValue}
         />
     );
 };
