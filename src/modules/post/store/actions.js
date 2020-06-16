@@ -104,12 +104,25 @@ export const createPost = (data) => async dispatch => {
     }
 }
 
-export const deleteImage = (id) => async dispatch => {
+export const deleteImage = (data) => async (dispatch, getState) => {
     try {
-        const response = await PostService.deleteImage(id)
+        console.log(data)
+        const {posts} = getState().posts
+        const newPosts = posts.map(post => {
+            if (data.imageable_id === post.id) {
+                const images = post.images.filter(image => image.id !== data.id)
+                console.log('images',images)
+                console.log('{...post, images}',{...post, images})
+                return {...post, images}
+            }
+            return post
+        })
+        console.log('newPosts',newPosts)
+        // console.log('posts', posts)
+        const response = await PostService.deleteImage(data.id)
         dispatch({
             type: DELETE_IMAGE,
-            payload: id,
+            payload: newPosts,
         })
     } catch (error) {
         dispatch({

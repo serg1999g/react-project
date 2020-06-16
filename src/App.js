@@ -18,6 +18,7 @@ import AuthProfileContainer from "./modules/profile/AuthProfile/AuthProfileConta
 import EditPostContainer from "./modules/post/edit/EditPostContainer";
 import SpeciesWeProtect from "./modules/pages/SpeciesWeProtect";
 import CreatePostContainer from "./modules/post/create/CreatePostContainer";
+import FightClimateChange from "./modules/pages/FightClimateChange";
 
 function App() {
     const user = useSelector(state => state.auth.user);
@@ -46,6 +47,7 @@ function App() {
                 <PrivateRoute exact path="/posts/:id/edit" component={EditPostContainer}/>
                 <PublicRoute exact path={routesByName.signUp} component={SignUpContainer}/>
                 <Route exact path={routesByName.speciesWeProtect} component={SpeciesWeProtect}/>
+                <Route exact path={routesByName.FightClimateChange} component={FightClimateChange}/>
                 <Route exact path="*" component={Page404}/>
             </Switch>
             <Footer/>

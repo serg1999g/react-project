@@ -1,13 +1,12 @@
-import React, {useEffect, useCallback, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import EditPostComponent from "./EditPostComponent";
 import {formFields} from "./constants";
 import {useFormik} from 'formik';
 import {setPosts, updatePost as updatePostAction} from "../store/actions";
 import {connect} from 'react-redux';
 import * as Yup from 'yup';
-import PostService from "../PostService";
 import isEmpty from 'lodash/isEmpty';
 
 
@@ -18,15 +17,12 @@ const EditPostContainer = (
 ) => {
     const {id} = useParams();
     const dispatch = useDispatch();
-
-    const [post, setPost] = useState([])
-    const fetchApi = useCallback(async () => {
-        const response = await PostService.editPost(id);
-        await dispatch(setPosts())
-        setPost(response.data);
-    },[dispatch])
+    const post = useSelector(state => state.posts.posts.find(post => post.id === Number(id)));
 
     useEffect(() => {
+        const fetchApi = async () => {
+            dispatch(setPosts())
+        }
         fetchApi()
     }, [])
 

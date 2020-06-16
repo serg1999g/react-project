@@ -1,6 +1,6 @@
 import React, {} from 'react';
 import Banner from "components/ui/Banner";
-
+import background from 'assets/images/bg1.jpg';
 
 const SpeciesWeProtect = (
     {}
@@ -8,7 +8,7 @@ const SpeciesWeProtect = (
 
     return (
         <main>
-            <Banner/>
+            <Banner background={background}/>
             <div className="container">
                 <p className='mb-3 mt-3'>
                     Every second breath we take is courtesy of the ocean, and marine species play a vital role in
@@ -55,9 +55,5 @@ const SpeciesWeProtect = (
         </main>
     );
 };
-
-SpeciesWeProtect.propTypes = {};
-
-SpeciesWeProtect.defaultProps = {};
 
 export default SpeciesWeProtect;

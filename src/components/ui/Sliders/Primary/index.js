@@ -1,44 +1,14 @@
 import React, {} from 'react';
-import SpriteIcon from "components/icons/SpriteIcon";
 import BaseLink from "components/ui/Link/Base";
 import classes from './Primary.module.scss';
 import slide1 from 'assets/images/1.jpg';
 import slide2 from 'assets/images/2.jpg';
+import slide3 from 'assets/images/turtle_bg.jpg';
 
 
 const PrimarySlider = (
-    {
-        items
-    }
+    {}
 ) => {
-    const PrevArrow = (props) => {
-        const {className, onClick} = props;
-
-        return (
-            <div onClick={onClick} className={className}>
-                <SpriteIcon name={'prev-icon'}/>
-            </div>
-        )
-    };
-
-    const NextArrow = (props) => {
-        const {className, onClick} = props;
-
-        return (
-            <div onClick={onClick} className={className}>
-                <SpriteIcon name={'next-icon'}/>
-            </div>
-        )
-    };
-
-    const settings = {
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        prevArrow: <PrevArrow/>,
-        nextArrow: <NextArrow/>,
-    };
 
     return (
         <div className='d-flex flex-wrap justify-content-between'>
@@ -46,25 +16,24 @@ const PrimarySlider = (
                 <img className={classes.image} src={slide1} alt=""/>
 
                 <div className={classes.blockWithDescription}>
-                    <h4 className={classes.title}>
-                        Save Marine Species
-                    </h4>
+                    <h4 className={classes.title}>Save Marine Species</h4>
                 </div>
                 <div className={classes.wrapperBtn}>
-                    <BaseLink path={'species-we-protect'} title={'test'} spacing='px-3 py-1'/>
+                    <BaseLink path='species-we-protect' title='Open' spacing='px-3 py-1'/>
                 </div>
             </div>
             <div className={classes.blockSlide}>
                 <img className={classes.image} src={slide2} alt=""/>
 
                 <div className={classes.blockWithDescription}>
-                    <h4 className={classes.title}>
-                        Save Marine Species
-                    </h4>
+                    <h4 className={classes.title}>Fight Climate Change</h4>
+                </div>
+                <div className={classes.wrapperBtn}>
+                    <BaseLink path='fight-climate-change' title='Open' spacing='px-3 py-1'/>
                 </div>
             </div>
             <div className={classes.blockSlide}>
-                <img className={classes.image} src={slide1} alt=""/>
+                <img className={classes.image} src={slide3} alt=""/>
 
                 <div className={classes.blockWithDescription}>
                     <h4 className={classes.title}>
@@ -74,27 +43,8 @@ const PrimarySlider = (
             </div>
         </div>
 
-
-        // <Slider {...settings}>
-        //
-        //     <div>
-        //         test
-        //     </div>
-        //     <div>
-        //         test
-        //     </div>
-        //     <div>
-        //         test
-        //     </div>
-        //     <div>
-        //         test
-        //     </div>
-        // </Slider>
     );
 };
 
-PrimarySlider.propTypes = {};
-
-PrimarySlider.defaultProps = {};
 
 export default PrimarySlider;

@@ -1,9 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import * as PropTypes from 'prop-types';
 import Input from "components/ui/Inputs/Base";
 import {formFields} from "./constants";
 import Button from "components/ui/Button/base";
 import {useDropzone} from 'react-dropzone';
+import {deleteAvatar} from "../../profile/store/actions";
+import classes from "../../profile/editAvatar/EditAvatar.module.scss";
+import SpriteIcon from "components/icons/SpriteIcon";
+import UploadImage from "components/ui/UploadImage";
+import {useDispatch} from 'react-redux';
+import {deleteImage} from "../store/actions";
 
 
 const EditPostComponent = (
@@ -17,35 +23,20 @@ const EditPostComponent = (
         post,
     }
 ) => {
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (!post) {
             return;
         }
-        {
-            setFieldValue('id', post.id, false)
-        }
-        {
-            setFieldValue('name', post.name, false)
-        }
-        {
-            setFieldValue('description', post.description, false)
-        }
-        {
-            setFieldValue('content', post.content, false)
-        }
-        {
-            setFieldValue('location', post.location, false)
-        }
-        {
-            setFieldValue('language', post.language, false)
-        }
-        {
-            setFieldValue('duration', post.duration, false)
-        }
-        {
-            setFieldValue('start', post.start, false)
-        }
+        setFieldValue('id', post.id, false)
+        setFieldValue('name', post.name, false)
+        setFieldValue('description', post.description, false)
+        setFieldValue('content', post.content, false)
+        setFieldValue('location', post.location, false)
+        setFieldValue('language', post.language, false)
+        setFieldValue('duration', post.duration, false)
+        setFieldValue('start', post.start, false)
     }, [post])
 
     const {getRootProps, getInputProps, isDragActive} = useDropzone({
@@ -56,6 +47,37 @@ const EditPostComponent = (
         }
     });
 
+    // console.log(post.images)
+
+    const images = useMemo(() => {
+        return post && post.images
+            ? post.images
+            : null
+    })
+    const handleClick = (image) => {
+        dispatch(deleteImage(image))
+    }
+
+
+    const renderImages = useMemo(() => images && images.map((image) => (
+        <div key={image.id}>
+            <div className={classes.wrapperImage}>
+                <button onClick={e => handleClick(image)} className={classes.btn}>
+                    <SpriteIcon name='remove-icon'/>
+                </button>
+                <img src={image.image} alt="avatar" className={classes.image}/>
+            </div>
+
+            <div>
+                <form onSubmit={handleSubmit}>
+                    {/*<UploadImage setFieldValue={setFieldValue}/>*/}
+                    <button>
+                        update
+                    </button>
+                </form>
+            </div>
+        </div>
+    )), [images]);
     return (
         <div className='container'>
             <form onSubmit={handleSubmit}>
@@ -161,15 +183,22 @@ const EditPostComponent = (
                 </div>
                 <Button text='Submit'/>
             </form>
+            {renderImages}
+            {/*<button onClick={handleClick}>*/}
+            {/*    test*/}
+            {/*</button>*/}
         </div>
     );
 };
 
 EditPostComponent.propTypes = {
-    handleChange:PropTypes.func,
-    handleSubmit:PropTypes.func,
+    handleChange: PropTypes.func,
+    handleSubmit: PropTypes.func,
+    images: PropTypes.array
 };
 
-EditPostComponent.defaultProps = {};
+EditPostComponent.defaultProps = {
+    images: []
+};
 
-export default EditPostComponent;
+export default React.memo(EditPostComponent);

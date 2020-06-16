@@ -54,20 +54,12 @@ export const PostReducer = (state = initialState, {type, payload}) => {
                 ]
             }
         }
-        // case DELETE_IMAGE: {
-        //     console.log('payload',payload)
-        //     return {
-        //         ...state,
-        //         posts: {
-        //             ...state.posts,
-        //
-        //             // data: {
-        //             //     ...state.profile.data,
-        //             //     images: payload,
-        //             // }
-        //         }
-        //     }
-        // }
+        case DELETE_IMAGE: {
+            return {
+                ...state,
+                posts:payload,
+            }
+        }
         case SET_ERROR: {
             return {
                 ...state,
