@@ -18,7 +18,7 @@ const UserPostsContainer = (
             return;
         }
         dispatch(setPosts())
-    }, [posts, dispatch])
+    }, [posts])
 
     const user = useSelector(state => state.auth.user)
 

@@ -29,35 +29,34 @@ const ShowPost = (
 
     return (
         <div id={id} className={clsx(classes.post, 'd-flex flex-column')}>
-
+            <h3 className='text-center'>{name}</h3>
             <div className={clsx(classes.blockWithDescription, 'd-flex align-items-center')}>
                 <div>
-                    {renderImage}
-                </div>
-                <div className='ml-4'>
-                    <h4>Название: {name}</h4>
                     <p className={classes.description}>
-                        Программа: {description}
+                        <span className={classes.titleName}>Программа:</span> {description}
                     </p>
 
                     <p className={classes.description}>
-                        Языки: {language}
+                        <span className={classes.titleName}>Языки:</span> {language}
                     </p>
                     <p className={classes.description}>
-                        Место: {location}
+                        <span className={classes.titleName}>Место:</span> {location}
                     </p>
                     <p className={classes.description}>
-                        Продолжительность: {duration}
+                        <span className={classes.titleName}>Продолжительность:</span> {duration}
                     </p>
                     <p className={classes.description}>
-                        Когда: {start}
+                        <span className={classes.titleName}>Когда:</span> {start}
+                    </p>
+                    <p className={classes.content}>
+                        <span className={clsx(classes.titleName, 'd-flex mb-1')}>Описание:</span> {content}
                     </p>
                 </div>
             </div>
             <div>
-                <p className={classes.content}>
-                    {content}
-                </p>
+                <div className='d-flex flex-wrap my-2'>
+                    {renderImage}
+                </div>
             </div>
         </div>
     );

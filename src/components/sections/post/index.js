@@ -3,9 +3,9 @@ import * as PropTypes from 'prop-types';
 import classes from './Post.module.scss';
 import BaseLink from "components/ui/Link/Base";
 import clsx from 'clsx';
-import Image from "components/ui/Image";
 import {deletePost} from "modules/post/store/actions";
 import {useDispatch} from 'react-redux';
+import defaultImage from 'assets/images/default.png';
 
 
 const Post = (
@@ -19,13 +19,11 @@ const Post = (
         editPost,
     }
 ) => {
-    const renderImage = useMemo(() => image.map(({image, id}) => (
-        <Image
-            key={id}
-            id={id}
-            image={image}
-        />
-    )), [image]);
+    const renderImage = useMemo(() => {
+        return image && image[0]
+            ? image[0].image
+            : defaultImage
+    }, [image])
 
     const dispatch = useDispatch()
 
@@ -36,8 +34,10 @@ const Post = (
 
     return (
         <div id={id} className={clsx(classes.post, 'd-flex align-items-center justify-content-between')}>
-            <div className='d-flex'>
-                {renderImage}
+            <div className={clsx(classes.wrapperContent, 'd-flex')}>
+                <div className={classes.imageBlock}>
+                    <img className={classes.image} src={renderImage} alt=""/>
+                </div>
                 <div className={classes.blockWithDescription}>
                     <BaseLink path={path} title={name} spacing={spacing}/>
                     <p className={classes.description}>

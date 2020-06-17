@@ -7,6 +7,7 @@ export const routesByName = {
     createPost: '/post/create',
     speciesWeProtect: '/species-we-protect',
     FightClimateChange: '/fight-climate-change',
+    seaTurtle: '/sea-turtle',
     roteWithParams(param = ':param') {
         return `/prefix/${param}`
     },

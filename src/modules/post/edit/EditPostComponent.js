@@ -47,8 +47,6 @@ const EditPostComponent = (
         }
     });
 
-    // console.log(post.images)
-
     const images = useMemo(() => {
         return post && post.images
             ? post.images
@@ -60,27 +58,19 @@ const EditPostComponent = (
 
 
     const renderImages = useMemo(() => images && images.map((image) => (
-        <div key={image.id}>
+        <div key={image.id} className='mb-2 mr-2'>
             <div className={classes.wrapperImage}>
                 <button onClick={e => handleClick(image)} className={classes.btn}>
                     <SpriteIcon name='remove-icon'/>
                 </button>
                 <img src={image.image} alt="avatar" className={classes.image}/>
             </div>
-
-            <div>
-                <form onSubmit={handleSubmit}>
-                    {/*<UploadImage setFieldValue={setFieldValue}/>*/}
-                    <button>
-                        update
-                    </button>
-                </form>
-            </div>
         </div>
     )), [images]);
     return (
-        <div className='container'>
-            <form onSubmit={handleSubmit}>
+        <div className='container pt-2 pb-2'>
+            <h1>Edit post</h1>
+            <form onSubmit={handleSubmit} className='mb-2'>
                 <Input
                     id={formFields.id}
                     spacing='mb-3'
@@ -181,12 +171,13 @@ const EditPostComponent = (
                         <p>Drag 'n' drop some files here, or click to select files</p>
                     )}
                 </div>
-                <Button text='Submit'/>
+                <div className='pt-2'>
+                    <Button text='Submit'/>
+                </div>
             </form>
-            {renderImages}
-            {/*<button onClick={handleClick}>*/}
-            {/*    test*/}
-            {/*</button>*/}
+            <div className='d-flex flex-wrap'>
+                {renderImages}
+            </div>
         </div>
     );
 };

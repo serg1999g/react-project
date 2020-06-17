@@ -19,6 +19,7 @@ import EditPostContainer from "./modules/post/edit/EditPostContainer";
 import SpeciesWeProtect from "./modules/pages/SpeciesWeProtect";
 import CreatePostContainer from "./modules/post/create/CreatePostContainer";
 import FightClimateChange from "./modules/pages/FightClimateChange";
+import SeaTurtle from "./modules/pages/SeaTurtle";
 
 function App() {
     const user = useSelector(state => state.auth.user);
@@ -48,6 +49,7 @@ function App() {
                 <PublicRoute exact path={routesByName.signUp} component={SignUpContainer}/>
                 <Route exact path={routesByName.speciesWeProtect} component={SpeciesWeProtect}/>
                 <Route exact path={routesByName.FightClimateChange} component={FightClimateChange}/>
+                <Route exact path={routesByName.seaTurtle} component={SeaTurtle}/>
                 <Route exact path="*" component={Page404}/>
             </Switch>
             <Footer/>

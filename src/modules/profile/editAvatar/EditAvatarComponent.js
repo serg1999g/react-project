@@ -45,9 +45,11 @@ const EditAvatarComponent = (
                 <div>
                     <form onSubmit={handleSubmit}>
                         <UploadImage setFieldValue={setFieldValue}/>
-                        <button>
-                            update
-                        </button>
+                        <div className='d-flex'>
+                            <button className={classes.updateAvatarBtn}>
+                                Update Avatar
+                            </button>
+                        </div>
                     </form>
                 </div>
             }

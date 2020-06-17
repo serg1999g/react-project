@@ -1,4 +1,12 @@
 @import "src/styles/index";
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @media (max-width: 767.98px) {
+    justify-content: center;
+  }
+}
 
 .blockSlide {
   max-width: 320px;
@@ -8,6 +16,7 @@
   overflow: hidden;
   transition-timing-function: ease-out;
   transition-duration: 550ms;
+  margin-bottom: spacing(2);
 
   &:before {
     content: '';

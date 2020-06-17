@@ -29,10 +29,9 @@ const AuthProfileComponent = (
                     tabClassName={clsx(classes.tab, 'd-flex', key === 'userInfo' ? classes.active : null)}
                     eventKey="userInfo"
                     title='User Info'>
-                    <div className='d-flex'>
+                    <div className={clsx(classes.wrapperProfile,'d-flex flex-wrap')}>
                         <EditProfileContainer user={user}/>
                         <PasswordContainer/>
-
                     </div>
                 </Tab>
                 <Tab

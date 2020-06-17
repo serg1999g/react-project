@@ -3,6 +3,9 @@
 .tabs {
   margin: spacing(5) 0;
   border-bottom: none;
+  @media (max-width: 767.98px) {
+    flex-direction: column;
+  }
 
   .tab {
     display: flex;
@@ -12,6 +15,9 @@
     border: none;
     background-color: transparent;
     color: $tertiary-color;
+    @media (max-width: 767.98px) {
+      width: 100%;
+    }
 
     &:after {
       position: absolute;
@@ -39,5 +45,12 @@
         background-color: $primary-color;
       }
     }
+  }
+}
+
+.wrapperProfile {
+  justify-content: space-between;
+  @media (max-width: 1200px) {
+    justify-content: center;
   }
 }

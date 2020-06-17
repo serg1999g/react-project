@@ -26,7 +26,8 @@ const CreatePostComponent = (
     });
 
     return (
-        <div className='container'>
+        <div className='container pt-2 pb-2'>
+            <h1>Create post</h1>
             <form onSubmit={handleSubmit}>
                 <Input
                     id={formFields.id}
@@ -128,8 +129,9 @@ const CreatePostComponent = (
                         <p>Drag 'n' drop some files here, or click to select files</p>
                     )}
                 </div>
-
-                <Button text='Submit'/>
+                <div className='pt-2'>
+                    <Button text='Submit'/>
+                </div>
             </form>
         </div>
     );

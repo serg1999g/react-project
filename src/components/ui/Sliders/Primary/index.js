@@ -11,7 +11,7 @@ const PrimarySlider = (
 ) => {
 
     return (
-        <div className='d-flex flex-wrap justify-content-between'>
+        <div className={classes.contentWrapper}>
             <div className={classes.blockSlide}>
                 <img className={classes.image} src={slide1} alt=""/>
 
@@ -37,8 +37,11 @@ const PrimarySlider = (
 
                 <div className={classes.blockWithDescription}>
                     <h4 className={classes.title}>
-                        Save Marine Species
+                        Sea Turtle
                     </h4>
+                </div>
+                <div className={classes.wrapperBtn}>
+                    <BaseLink path='sea-turtle' title='Open' spacing='px-3 py-1'/>
                 </div>
             </div>
         </div>
